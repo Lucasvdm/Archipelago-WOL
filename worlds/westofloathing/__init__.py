@@ -4,6 +4,7 @@ from BaseClasses import Item, Location, Tutorial, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from .options import wol_option_groups, wol_option_presets, WOLOptions
 from .items import item_table, item_name_groups, item_name_to_id
+from .locations import location_table, location_name_groups, location_name_to_id
 
 class WOLLocation(Location):
     game: str = "West of Loathing"
@@ -44,9 +45,10 @@ class WOLWorld(World):
     options_dataclass = WOLOptions
     #settings: typing.ClassVar[WOLSettings]
     item_name_groups = item_name_groups
-    location_name_groups = {}
+    location_name_groups = location_name_groups
 
     item_name_to_id = item_name_to_id
+    location_name_to_id = location_name_to_id
 
     def create_item(self, name: str, classification: ItemClassification = None) -> WOLItem:
         item_data = item_table[name]
