@@ -1,10 +1,11 @@
 from typing import Dict, List, Set, NamedTuple
 from BaseClasses import ItemClassification
+from itertools import filterfalse
 
 class WOLItemData(NamedTuple):
     id_offset: int
     classification: ItemClassification
-    categories: Set = {}
+    categories: Set[str] = {}
     copies_in_pool: int = 1
     is_dlc: bool = False
 
@@ -581,3 +582,36 @@ item_table: Dict[str, WOLItemData] = {
 }
 
 item_name_to_id: Dict[str, int] = {name: base_id + data.id_offset for name, data in item_table.items()}
+
+item_categories = {
+    "Gear",
+    "Lapel",
+    "Offhand",
+    "Boots",
+    "Pants",
+    "Hats",
+    "Rings",
+    "Pistols",
+    "Melee",
+    "Prog Loot",
+    "Consumables",
+    "Food",
+    "Booze",
+    "Potions",
+    "Combat",
+    "Books",
+    "Quest Items",
+    "Miscellany"
+}
+
+item_name_groups: Dict[str, Set[str]] = {}
+
+for category in item_categories:
+    items_in_category = set()
+    for item, data in item_table.items():
+        if category in data.categories:
+            items_in_category.add(item)
+    item_name_groups[category] = items_in_category
+
+    #One line, fancier, maybe faster(?), but way less legible
+    #item_name_groups[category] = set(dict(filterfalse(lambda itemtuple: category not in itemtuple[1].categories, item_table.items())).keys())

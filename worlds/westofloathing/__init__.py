@@ -1,7 +1,9 @@
-import settings, typing
-from BaseClasses import Item, Location, Tutorial
+import settings
+from typing import List, Dict
+from BaseClasses import Item, Location, Tutorial, ItemClassification
 from worlds.AutoWorld import WebWorld, World
 from .options import wol_option_groups, wol_option_presets, WOLOptions
+from .items import item_table, item_name_groups, item_name_to_id
 
 class WOLLocation(Location):
     game: str = "West of Loathing"
@@ -41,5 +43,23 @@ class WOLWorld(World):
     options: WOLOptions
     options_dataclass = WOLOptions
     #settings: typing.ClassVar[WOLSettings]
-    item_name_groups = {}
+    item_name_groups = item_name_groups
     location_name_groups = {}
+
+    item_name_to_id = item_name_to_id
+
+    def create_item(self, name: str, classification: ItemClassification = None) -> WOLItem:
+        item_data = item_table[name]
+        return WOLItem(name, classification or item_data.classification, self.item_name_to_id[name], self.player)
+
+    def create_items(self) -> None:
+        wol_items: List[WOLItem] = []
+        items_to_create: Dict[str, int] = {item: data.copies_in_pool for item, data in item_table.items()}
+
+        #Logic for modifying the item pool contents based on options and such will go here
+
+        for item, quantity in items_to_create.items():
+            for _ in range(quantity):
+                wol_items.append(self.create_item(item))
+
+        self.multiworld.itempool += wol_items
