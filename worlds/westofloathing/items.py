@@ -379,7 +379,7 @@ item_table: Dict[str, WOLItemData] = {
     "Buffalo Soldier Diagram": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Burned Scroll": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Cargo Car Key": WOLItemData(ItemClassification.useful, {"Quest Items"}),
-    "Charred Locket": WOLItemData(ItemClassification.useful, {"Quest Items"}),
+    "Charred Locket": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Child's Bracelet": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Chili Sin Pistoles": WOLItemData(ItemClassification.progression, {"Quest Items"}, is_dlc=True),
     "Chili Sin Pistoles (Muerto)": WOLItemData(ItemClassification.progression, {"Quest Items"}, is_dlc=True),
