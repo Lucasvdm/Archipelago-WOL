@@ -9,7 +9,7 @@ base_id = 752813602
 
 #Note: Access paths do not always correlate to the in-game map regions
 #Some map regions (e.g. C) have multiple possible initial access points that need to link back to the region for wandering
-#Without map rando, many of these could be condensed into larger groups
+#Without map/entrance rando, many of these could be condensed into larger groups
 region_table: Dict[str, Set[str]] = {
     "Menu": {"Your Family's Farm"},
     "Your Family's Farm": {"Dirtwater"},
@@ -62,7 +62,21 @@ region_table: Dict[str, Set[str]] = {
     "Alamo Rent-A-Mule": {"Map Region H", "Deepest Delve Mine"},
     "Map Region H": {"Alamo Rent-A-Mule", "Curious False Mountain", "Curious Flat Plain", "Deepest Delve Mine",
                      "Halloway's Hideaway", "Moonshine Still", "Olive Garden's Homestead", "Random Encounters H"},
-    "Miscellaneous": {"Leatherworkery Crafting", "Master Cookery Crafting", "Progressive Containers"}
+    "Miscellaneous": {"Leatherworkery Crafting", "Master Cookery Crafting", "Progressive Containers"},
+    "Gun Manor": {"Gun Manor Hedge Maze", "Gun Manor Carriage House", "Gun Manor Visitor Center",
+                  "Gun Manor First Floor"},
+    "Gun Manor Hedge Maze": {"Gun Manor Cellar"},
+    "Gun Manor Cellar": {"Gun Manor Laboratory"},
+    "Gun Manor First Floor": {"Gun Manor Cellar", "Gun Manor Parlor", "Gun Manor Kitchen", "Gun Manor Dining Room",
+                              "Gun Manor Second Floor"},
+    "Gun Manor Kitchen": {"Gun Manor Larder", "Gun Manor Pantry"},
+    "Gun Manor Second Floor": {"Gun Manor Library", "Gun Manor Art Gallery", "Gun Manor Restroom",
+                               "Gun Manor Guest Rooms", "Gun Manor Third Floor"},
+    "Gun Manor Third Floor": {"Mr. Gun's Manliness Room", "Mrs. Gun's Room", "Gun Manor Music Room",
+                              "Gun Manor Children's Quarters"},
+    "Mr. Gun's Manliness Room": {"Gun Manor Billiards Room", "Mr. Gun's Bowling Room", "Mr. Gun's Trophy Room"},
+    "Gun Manor Billiards Room": {"Gun Manor Belfry"},
+    "Gun Manor Children's Quarters": {"Gun Manor Nursery", "Gun Manor Toddler's Room", "Gun Manor Tween Room"}
 }
 
 location_table: Dict[str, WOLLocationData] = {
