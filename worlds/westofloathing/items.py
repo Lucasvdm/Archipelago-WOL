@@ -377,7 +377,7 @@ item_table: Dict[str, WOLItemData] = {
     "Broken Leg Pills": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Buffalo Pile Locker Key": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Buffalo Soldier Diagram": WOLItemData(ItemClassification.progression, {"Quest Items"}),
-    "Burned Scroll": WOLItemData(ItemClassification.progression, {"Quest Items"}),
+    "Burned Scroll": WOLItemData(ItemClassification.progression, {"Quest Items", "Necromancer Clues"}),
     "Cargo Car Key": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Charred Locket": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Child's Bracelet": WOLItemData(ItemClassification.useful, {"Quest Items"}),
@@ -390,7 +390,7 @@ item_table: Dict[str, WOLItemData] = {
     "Clip-On Bow Tie": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Comedy Flier": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Creepy Whispering Stone": WOLItemData(ItemClassification.useful, {"Quest Items"}),
-    "Cryptic Note About Ley Lines": WOLItemData(ItemClassification.progression, {"Quest Items"}),
+    "Cryptic Note About Ley Lines": WOLItemData(ItemClassification.progression, {"Quest Items", "Necromancer Clues"}),
     "Curly's Auto-Gyrotheodolite": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Curly's Compass": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Curly's Strongbox": WOLItemData(ItemClassification.useful, {"Quest Items"}),
@@ -399,7 +399,7 @@ item_table: Dict[str, WOLItemData] = {
     "Desert Ape Skeleton": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Dictionary Page (Poach)": WOLItemData(ItemClassification.progression, {"Quest Items"}, is_dlc=True),
     "Dining Car Key": WOLItemData(ItemClassification.useful, {"Quest Items"}),
-    "Discipline Slip": WOLItemData(ItemClassification.progression, {"Quest Items"}),
+    "Discipline Slip": WOLItemData(ItemClassification.progression, {"Quest Items", "Necromancer Clues"}),
     "El Vibrato Cross": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "El Vibrato Cylinder": WOLItemData(ItemClassification.progression, {"Quest Items"}, 3),
     "El Vibrato Device": WOLItemData(ItemClassification.useful, {"Quest Items"}),
@@ -469,7 +469,7 @@ item_table: Dict[str, WOLItemData] = {
     "Recovered Mug": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Remains Of The Potemkin Gang": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Right Half Of Curly's Map": WOLItemData(ItemClassification.progression, {"Quest Items"}),
-    "Robe Receipt": WOLItemData(ItemClassification.progression, {"Quest Items"}),
+    "Robe Receipt": WOLItemData(ItemClassification.progression, {"Quest Items", "Necromancer Clues"}),
     "Santa Cortada's Skull": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Sauté Knife": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Shaker Of Saltpeter": WOLItemData(ItemClassification.progression, {"Quest Items"}),
@@ -483,7 +483,7 @@ item_table: Dict[str, WOLItemData] = {
     "Southeast-Western Murder Pepper": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Spooky Lullaby Sheet Music": WOLItemData(ItemClassification.progression, {"Quest Items"}, is_dlc=True),
     "St. Beefus' Finger": WOLItemData(ItemClassification.progression, {"Quest Items"}),
-    "Sticky Note": WOLItemData(ItemClassification.progression, {"Quest Items"}),
+    "Sticky Note": WOLItemData(ItemClassification.progression, {"Quest Items", "Necromancer Clues"}),
     "Strange Stone Arrow": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Syrup Tap": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Tannery Back Door Key": WOLItemData(ItemClassification.progression, {"Quest Items"}),
@@ -617,7 +617,8 @@ item_categories = {
     "Combat",
     "Books",
     "Quest Items",
-    "Miscellany"
+    "Miscellany",
+    "Necromancer Clues"
 }
 
 item_name_groups: Dict[str, Set[str]] = {}
