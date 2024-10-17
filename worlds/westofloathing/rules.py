@@ -46,10 +46,34 @@ def has_stench_resistance(state: CollectionState, world: "WOLWorld") -> bool:
             state.has("Advanced Beancraft", player, 8)
            )
 
-def has_hot_resistance() -> bool:
-    #For this and other required resistances, need to consider what consumables give them as well and if
-    #there are any places where you can reliably craft/loot those consumables in addition to pool items
-    return True
+def has_hot_resistance(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return (
+            state.has_group("Hot Resistance", player) or
+            state.can_reach_region("Roy Bean's House", player) or
+            (
+             state.can_reach_region("Soupstock Lode", player) and
+             (state.has("Monkey Wrench", player) or state.has("Percussive Maintenance", player))
+            ) or
+            (
+             state.has("Desert Eatin' And Drinkin'", player) and #For foraging clownwort pollen
+             (
+              state.can_reach_region("Map Region C", player) or
+              state.can_reach_region("Circus", player) or
+              state.can_reach_region("Lazy-A Dude Ranch", player) or
+              state.can_reach_region("Olive Garden's Homestead", player)
+             )
+            ) or
+            (
+             can_cook(state, world) and saved_murray(state, world) #Can make Mirrorbeans at level 3
+            ) or
+            #Could get Uncanny Presence with fewer of these, 5 guarantees you have the option -
+            #but you could still choose something else, so need all 8 to guarantee that you have the perk
+            state.has("Advanced Beancraft", player, 8) or
+            (state.has("Varmint Skinnin' Knife", player) and state.can_reach_region("Map Region F", player))
+            #Can also get it from Beer-Battered Hot Dogs but those are easily missable and would be a pain for logic
+           )
 
 def can_get_breadwood_lumber(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
@@ -64,8 +88,9 @@ def can_get_breadwood_lumber(state: CollectionState, world: "WOLWorld") -> bool:
         state.has("Overdue Breadwood Book", player) +
         (state.has("Overdue Breadwood Book x5", player) and
          state.can_reach_region("Soupstock Lode", player) and
-         (state.has("Monkey Wrench", player) or state.has("Percussive Maintenance", player)) and
-         has_hot_resistance()))
+         (state.has("Monkey Wrench", player) or state.has("Percussive Maintenance", player)) #and
+         #has_hot_resistance(state, world)) #This IS a requirement but basically short circuits because you can farm it in soupstock lode
+        )
 
     return count >= 5
 
