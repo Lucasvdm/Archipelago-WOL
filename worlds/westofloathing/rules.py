@@ -4,11 +4,47 @@ from BaseClasses import CollectionState
 if TYPE_CHECKING:
     from . import WOLWorld
 
-def has_stench_resistance(percent: int = 1) -> bool:
-    #TODO: Add item group for items with stench resistance, and maybe a property for the amount they
-    # provide so I can check for if the player has enough (in cases where there's a specific requirement)
-    #Can probably generalize this for all resistances and just take a parameter for the type
-    return True
+def can_cook(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return (
+            state.has("Beans Illustrated", player) and
+            (
+             state.has("A Portable Arcane Oven", player) or
+             state.can_reach_region("The Great Garbanzo's Hideout", player)
+            )
+           )
+
+def saved_murray(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return (state.can_reach_region("Lost Dutch Oven Mine", player) and
+            has_stench_resistance(state, world) and
+            #Percussive Maintenance OR Can of oil, haven't decided how to handle cans of oil and similar
+            #state.has("Percussive Maintenance", player) and
+            state.has("El Vibrato Headband", player))
+
+def has_stench_resistance(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return (
+            state.has_group("Stench Resistance", player) or
+            (
+             state.has("Desert Eatin' And Drinkin'", player) and #For foraging clownwort pollen
+             (
+              state.can_reach_region("Map Region C", player) or
+              state.can_reach_region("Circus", player) or
+              state.can_reach_region("Lazy-A Dude Ranch", player) or
+              state.can_reach_region("Olive Garden's Homestead", player)
+             )
+            ) or
+            (
+             can_cook(state, world) and saved_murray(state, world) #Can make Mirrorbeans at level 3
+            ) or
+            #Could get Uncanny Presence with fewer of these, 5 guarantees you have the option -
+            #but you could still choose something else, so need all 8 to guarantee that you have the perk
+            state.has("Advanced Beancraft", player, 8)
+           )
 
 def has_hot_resistance() -> bool:
     #For this and other required resistances, need to consider what consumables give them as well and if
@@ -51,11 +87,7 @@ def set_region_rules(world: "WOLWorld") -> None:
         lambda state: (state.can_reach_region("Fort of Darkness", player) and
                        state.has("A Bunch Of Really Small Guns", player))
     world.get_entrance("Dirtwater -> Murray's Curiosity & Bean").access_rule = \
-        lambda state: (state.can_reach_region("Lost Dutch Oven Mine", player) and
-                       has_stench_resistance() and
-                       #Percussive Maintenance OR Can of oil, haven't decided how to handle cans of oil and similar
-                       state.has("Percussive Maintenance", player) and
-                       state.has("El Vibrato Headband", player))
+        lambda state: saved_murray(state, world)
     world.get_entrance("Dirtwater -> Grady's Fine Leather Goods").access_rule = \
         lambda state: (state.can_reach_region("Danny's Tannery", player) and
                        state.has("Tannery Back Door Key", player) and
@@ -67,15 +99,11 @@ def set_region_rules(world: "WOLWorld") -> None:
     world.get_entrance("Dirtwater -> The Perfessor's House").access_rule = \
         lambda state: state.has("Strange Stone Arrow", player)
 
+    #Bounty regions don't really have any hard requirements - even for the ones that need items for the peaceful resolution,
+    #you can always just kill 'em, so by default there's the option for basically free progression up to the pickle factory
+
     world.get_entrance("Silversmith's House -> The Silver Plater").access_rule = \
         lambda state: state.has("Locks And How To Pick Them", player)
-
-    #TODO: Logic for bounty locations (past the first two):
-    #   The Potemkin Gang
-    #   Old Millinery
-    #   Abandoned Pickle Factory
-    #A new bounty unlocks when either of the active ones is completed, so to get access to all of their regions
-    #you need the item requirements to complete either of the first two, then either of the remaining, then again
     
     world.get_entrance("Railroad Camp (East) -> Railroad Camp (West)").access_rule = \
         lambda state: state.has("A Year's Supply Of Dynamite", player)
@@ -112,9 +140,7 @@ def set_region_rules(world: "WOLWorld") -> None:
                        (state.has("A Portable Leatherwork Bench", player) or
                         state.can_reach_region("Hellstrom Ranch", player)))
     world.get_entrance("Miscellany -> Master Cookery Crafting").access_rule = \
-        lambda state: (state.has("Beans Illustrated", player) and
-                       (state.has("A Portable Arcane Oven", player) or
-                        state.can_reach_region("The Great Garbanzo's Hideout", player)))
+        lambda state: can_cook(state, world)
 
 def set_location_rules(world: "WOLWorld") -> None:
     player = world.player
