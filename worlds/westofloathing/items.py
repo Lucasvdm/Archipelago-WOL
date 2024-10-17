@@ -497,8 +497,8 @@ item_table: Dict[str, WOLItemData] = {
     "Weird Rock Sample": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Whining El Vibrato Object": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "A Portable Alchemistry Set": WOLItemData(ItemClassification.useful, {"Miscellany"}),
-    "A Portable Arcane Oven": WOLItemData(ItemClassification.useful, {"Miscellany"}),
-    "A Portable Leatherwork Bench": WOLItemData(ItemClassification.useful, {"Miscellany"}),
+    "A Portable Arcane Oven": WOLItemData(ItemClassification.progression, {"Miscellany"}),
+    "A Portable Leatherwork Bench": WOLItemData(ItemClassification.progression, {"Miscellany"}),
     "All-Purpose Beans x2": WOLItemData(ItemClassification.useful, {"Miscellany"}),
     "Balloon": WOLItemData(ItemClassification.progression, {"Miscellany"}),
     "Bean-Iron Nugget": WOLItemData(ItemClassification.progression, {"Miscellany"}, 3),
@@ -594,7 +594,8 @@ item_table: Dict[str, WOLItemData] = {
     "Stock Certificate": WOLItemData(ItemClassification.filler, {"Miscellany"}, 3, is_dlc=True),
     "Spider Ring": WOLItemData(ItemClassification.filler, {"Gear", "Rings"}, is_dlc=True),
     "Manley's Finest Cotton Candy Schnapps": WOLItemData(ItemClassification.filler, {"Consumables", "Booze"}, is_dlc=True),
-    "Magic-Infused Salad": WOLItemData(ItemClassification.filler, {"Consumables", "Food"}, is_dlc=True)
+    "Magic-Infused Salad": WOLItemData(ItemClassification.filler, {"Consumables", "Food"}, is_dlc=True),
+    "NE North Central Logging Permit": WOLItemData(ItemClassification.progression, {"Quest Items"})
 }
 
 item_name_to_id: Dict[str, int] = {name: base_id + index for name, index in enumerate(item_table)}

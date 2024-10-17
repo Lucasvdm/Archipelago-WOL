@@ -10,10 +10,38 @@ def has_stench_resistance(percent: int = 1) -> bool:
     #Can probably generalize this for all resistances and just take a parameter for the type
     return True
 
+def has_hot_resistance() -> bool:
+    #For this and other required resistances, need to consider what consumables give them as well and if
+    #there are any places where you can reliably craft/loot those consumables in addition to pool items
+    return True
+
+def can_get_breadwood_lumber(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    if not state.can_reach_region("Breadwood", player): return False
+
+    count = 1 #The cemetery quest is basically free, at least as far as AP logic goes
+    count += (state.has("NE North Central Logging Permit", player) +
+        state.has("Breadwood's Missing Mail", player) +
+        state.has("Half A Ton Of Yeast", player) +
+        state.has("Forty Loaves Of Bread", player) +
+        state.has("Overdue Breadwood Book", player) +
+        (state.has("Overdue Breadwood Book x5", player) and
+         state.can_reach_region("Soupstock Lode", player) and
+         (state.has("Monkey Wrench", player) or state.has("Percussive Maintenance", player)) and
+         has_hot_resistance()))
+
+    return count >= 5
+
 def can_build_bridge(state: CollectionState, world: "WOLWorld") -> bool:
-    #TODO: Check if player can complete any 5 Breadwood quests, OR has Unlimited Bones + 4 Nex-Mex books,
-    # OR the El Vibrato model bridge (might want another requirement or two for that option later as well)
-    return True;
+    player = world.player
+
+    if not state.can_reach_region("Railroad Camp (West)", player): return False
+
+    #Might want another requirement for the El Vibrato bridge route later too, like activating the relevant facility or something
+    return (state.has("El Vibrato Model Bridge", player) or
+            (state.has("Progressive Nex-Mex Skillbook", player, 4) and state.can_reach_region("Buffalo Pile", player)) or 
+            can_get_breadwood_lumber(state, world))
 
 def set_region_rules(world: "WOLWorld") -> None:
     player = world.player
@@ -78,6 +106,15 @@ def set_region_rules(world: "WOLWorld") -> None:
 
     world.get_entrance("Map Region H -> Curious False Mountain").access_rule = \
         lambda state: state.has("El Vibrato Transponder", player)
+
+    world.get_entrance("Miscellany -> Leatherworkery Crafting").access_rule = \
+        lambda state: (state.has("Burned Leatherworking Manual", player) and
+                       (state.has("A Portable Leatherwork Bench", player) or
+                        state.can_reach_region("Hellstrom Ranch", player)))
+    world.get_entrance("Miscellany -> Master Cookery Crafting").access_rule = \
+        lambda state: (state.has("Beans Illustrated", player) and
+                       (state.has("A Portable Arcane Oven", player) or
+                        state.can_reach_region("The Great Garbanzo's Hideout", player)))
 
 def set_location_rules(world: "WOLWorld") -> None:
     player = world.player
