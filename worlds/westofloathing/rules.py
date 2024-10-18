@@ -20,8 +20,7 @@ def saved_murray(state: CollectionState, world: "WOLWorld") -> bool:
 
     return (state.can_reach_region("Lost Dutch Oven Mine", player) and
             has_stench_resistance(state, world) and
-            #Percussive Maintenance OR Can of oil, haven't decided how to handle cans of oil and similar
-            #state.has("Percussive Maintenance", player) and
+            (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
             state.has("El Vibrato Headband", player))
 
 #Resistance buffs that apply to all types and aren't covered by an item category
@@ -73,6 +72,34 @@ def has_cold_resistance(state: CollectionState, world: "WOLWorld") -> bool:
             state.can_reach_region("Roy Bean's House", player) or
             has_common_resistance(state, world)
             #Can also get it from Beer-Battered Hot Dogs but those are easily missable and would be a pain for logic
+           )
+
+def has_elv_keystone_source(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return (
+            (
+             state.can_reach_region("The Perfessor's House", player) and
+             state.has("El Vibrato Transponder", player)
+            ) or
+            (
+             state.can_reach_region("Lost Dutch Oven Mine", player) and
+             has_stench_resistance(state, world) and
+             (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player))
+            ) or
+            state.can_reach_region("Map Region D", player)
+           )
+
+def has_elv_battery_source(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return (
+            (
+             state.can_reach_region("The Perfessor's House", player) and
+             state.has("El Vibrato Transponder", player) and
+             state.has("El Vibrato Device", player)
+            ) or
+            state.can_reach_region("Map Region D", player)
            )
 
 def can_get_breadwood_lumber(state: CollectionState, world: "WOLWorld") -> bool:
@@ -188,3 +215,125 @@ def set_region_rules(world: "WOLWorld") -> None:
 def set_location_rules(world: "WOLWorld") -> None:
     player = world.player
     options = world.options
+
+    set_rule(world.get_location("Dirtwater Saloon - Bartender's Mini Piano"),
+             lambda state: state.can_reach_region("Shaggy Dog Cave", player))
+    set_rule(world.get_location("Dirtwater Saloon - Chef's Mail Key"),
+             lambda state: (state.has("Shaker Of Saltpeter", player) and
+                            state.has("Southeast-Western Murder Pepper", player)))
+    set_rule(world.get_location("Dirtwater Saloon - Chef's Quest Complete"),
+             lambda state: (state.has("Shaker Of Saltpeter", player) and
+                            state.has("Southeast-Western Murder Pepper", player) and
+                            state.has("Dave's Secret Sauce Recipe", player)))
+    set_rule(world.get_location("Dirtwater Post Office - Postal Codes"),
+             lambda state: state.can_reach_region("Postal Way Station", player))
+    set_rule(world.get_location("Dirtwater Post Office - P.O. Box 114"),
+             lambda state: state.has("Key To P.O. Box 114", player))
+    set_rule(world.get_location("Dirtwater Post Office - P.O. Box 441"),
+             lambda state: state.has("Key To P.O. Box 441", player))
+
+    #TODO: Logic for shops' bonus items (have another shop to the right)
+
+    set_rule(world.get_location("Shaggy Dog Cave - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Silversmith's House - Spittoon"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Silversmith's House - Safe"),
+             lambda state: (state.has("Locks And How To Pick Them", player) and
+                            state.has("Get Crackin': A Guide To Modern Safes", player)))
+    set_rule(world.get_location("Silversmith's House - Shelf (Item 1)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Silversmith's House - Shelf (Item 2)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Danny's Tannery (St. Rage Shed) - Grady's Cowsbane Seeds"),
+             lambda state: (state.has("Tannery Back Door Key", player) and
+                            state.has("Tannery St. Rage Key", player)))
+    set_rule(world.get_location("Stearns Ranch House - Lockbox"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Stearns Ranch Cellar - Safe"),
+             lambda state: state.has("Get Crackin': A Guide To Modern Safes", player))
+    set_rule(world.get_location("Snakepit Mine - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("The Daveyard - First Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("The Daveyard - Dave J's Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("The Daveyard Mausoleum - The Skeleton of Dave B. Defeated"),
+             lambda state: (state.has("Gore-Splattered Scroll", player) and
+                            state.has("Human Ashes x2", player) and
+                            state.has("Glass Sphere", player) and
+                            state.has("Pickaxe", player))) #For mining stardust
+    set_rule(world.get_location("Fort Cowardice Back Office - General Gob's Hat"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Fort Cowardice Back Office - General Gob's Pistol"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Fort Cowardice First Tent - Back-Right Footlocker"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Fort Cowardice Math Tent - Safe"),
+             lambda state: state.has("Get Crackin': A Guide To Modern Safes", player))
+    set_rule(world.get_location("Gustavson Gulch - Deli Hut"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Gustavson Gulch Storage Hut - Secret Item"),
+             lambda state: state.has("English-Goblintongue Dictionary", player))
+    set_rule(world.get_location("Gustavson Gulch Treasure Cave - Bottom Chest (Item 1)"),
+             lambda state: (state.has("Locks And How To Pick Them", player) and
+                            (state.has("Gustavson Gulch Treasure Cave Key", player) or
+                             state.has("Gustavson Gulch Treasure Cave Key (Spare)", player))))
+    set_rule(world.get_location("Gustavson Gulch Treasure Cave - Bottom Chest (Item 2)"),
+             lambda state: (state.has("Locks And How To Pick Them", player) and
+                            (state.has("Gustavson Gulch Treasure Cave Key", player) or
+                             state.has("Gustavson Gulch Treasure Cave Key (Spare)", player))))
+    set_rule(world.get_location("Gustavson Gulch Treasure Cave - Middle Chest"),
+             lambda state: (state.has("Gustavson Gulch Treasure Cave Key", player) or
+                            state.has("Gustavson Gulch Treasure Cave Key (Spare)", player)))
+    set_rule(world.get_location("Gustavson Gulch Destroyed - Dynamite Crate"),
+             lambda state: (state.can_reach_region("Fort Alldead", player) and
+                            state.has("Toy Skeletons", player)))
+    set_rule(world.get_location("Railroad Camp (East) - Rock Monster's Remains (Dr. Morton's Quest)"),
+             lambda state: state.can_reach_region("Frisco", player))
+    set_rule(world.get_location("Kole Ridge Mine (Level 2) - Triangular Stones"),
+             lambda state: (state.has("A Length Of Rope", player) and
+                            state.has("Shovel", player) and
+                            state.can_reach_region("Butterfield Ranch", player)))
+    set_rule(world.get_location("Kole Ridge Mine (Level 2) - Bean-Iron Deposit"),
+             lambda state: (state.has("A Length Of Rope", player) and
+                            state.has("Beans Illustrated", player) and
+                            state.has("Pickaxe", player)))
+    set_rule(world.get_location("Kole Ridge Mine (Level 3) - Pick-Head"),
+             lambda state: state.has("A Length Of Rope", player))
+    set_rule(world.get_location("Butterfield Ranch Barn - Milk Shelf"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Butterfield Ranch Barn - Toybox"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Snake Spring - Temporal Rift"),
+             lambda state: state.has("Key-Shaped El Vibrato Device", player))
+    set_rule(world.get_location("Old Mission Catacombs - Cemented Skull Pile"),
+             lambda state: state.has("Pickaxe", player))
+    set_rule(world.get_location("Old Millinery - Office Safe"),
+             lambda state: (state.has("Locks And How To Pick Them", player) and
+                            state.has("Get Crackin': A Guide To Modern Safes", player)))
+    set_rule(world.get_location("The Silver Plater - Plated Barbed Wire"),
+             lambda state: state.has("Big Coil Of Barbed Wire", player))
+    set_rule(world.get_location("Lost Dutch Oven Mine (Level 1) - Lockers (Item 1)"),
+             lambda state: has_stench_resistance(state, world))
+    set_rule(world.get_location("Lost Dutch Oven Mine (Level 1) - Lockers (Item 2)"),
+             lambda state: has_stench_resistance(state, world))
+    set_rule(world.get_location("Lost Dutch Oven Mine (Level 1) - Spittoon"),
+             lambda state: has_stench_resistance(state, world))
+    set_rule(world.get_location("Lost Dutch Oven Mine (Pit) - Emerald Rock"),
+             lambda state: (has_stench_resistance(state, world) and
+                            (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
+                            state.has("Pickaxe", player)))
+    set_rule(world.get_location("El Vibrato Chamber (Lost Dutch Oven Mine) - Leftmost Box"),
+             lambda state: (has_stench_resistance(state, world) and
+                            (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
+                            has_elv_keystone_source(state, world)))
+    set_rule(world.get_location("El Vibrato Chamber (Lost Dutch Oven Mine) - Locked Box"),
+             lambda state: (has_stench_resistance(state, world) and
+                            (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
+                            has_elv_keystone_source(state, world)))
+    set_rule(world.get_location("El Vibrato Ruin - Cylinder"),
+             lambda state: (has_stench_resistance(state, world) and
+                            (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
+                            has_elv_keystone_source(state, world) and
+                            has_elv_battery_source(state, world)))

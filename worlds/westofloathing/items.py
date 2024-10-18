@@ -46,7 +46,7 @@ item_table: Dict[str, WOLItemData] = {
     "Weirdly Deformed Bone": WOLItemData(ItemClassification.useful, {"Gear", "Lapel"}),
     "3 Ball": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}, is_dlc=True),
     "5 Ball": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}, is_dlc=True),
-    "6-Ball": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}, is_dlc=True),
+    "6 Ball": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}, is_dlc=True),
     "Ancient Bean Can": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}),
     "Antique Rangefinder": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}),
     "Bean-Iron Kettle": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}),
@@ -61,7 +61,7 @@ item_table: Dict[str, WOLItemData] = {
     "El Vibrato Cone": WOLItemData(ItemClassification.useful, {"Gear", "Offhand", "Prog Loot"}),
     "Filthy Porcelain Cone": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}),
     "Ghost Flower": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}),
-    "Glass Sphere": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}),
+    "Glass Sphere": WOLItemData(ItemClassification.progression, {"Gear", "Offhand"}),
     "Goblin Spyglass": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}),
     "Goblin Trash Sack": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}),
     "Gun Manor Pistol Token": WOLItemData(ItemClassification.useful, {"Gear", "Offhand"}, is_dlc=True),
@@ -402,7 +402,7 @@ item_table: Dict[str, WOLItemData] = {
     "Discipline Slip": WOLItemData(ItemClassification.progression, {"Quest Items", "Necromancer Clues"}),
     "El Vibrato Cross": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "El Vibrato Cylinder": WOLItemData(ItemClassification.progression, {"Quest Items"}, 3),
-    "El Vibrato Device": WOLItemData(ItemClassification.useful, {"Quest Items"}),
+    "El Vibrato Device": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "El Vibrato Model Bridge": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "El Vibrato Rod": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "El Vibrato Transponder": WOLItemData(ItemClassification.progression, {"Quest Items"}),
@@ -596,7 +596,9 @@ item_table: Dict[str, WOLItemData] = {
     "Manley's Finest Cotton Candy Schnapps": WOLItemData(ItemClassification.filler, {"Consumables", "Booze"}, is_dlc=True),
     "Magic-Infused Salad": WOLItemData(ItemClassification.filler, {"Consumables", "Food"}, is_dlc=True),
     "NE North Central Logging Permit": WOLItemData(ItemClassification.progression, {"Quest Items"}),
-    "Ghost Coach To Gun Manor": WOLItemData(ItemClassification.progression, {"Miscellany"}, is_dlc=True)
+    "Ghost Coach To Gun Manor": WOLItemData(ItemClassification.progression, {"Miscellany"}, is_dlc=True),
+    "English-Goblintongue Dictionary": WOLItemData(ItemClassification.progression, {"Books"}),
+    "Can Of Oil": WOLItemData(ItemClassification.progression, {"Miscellany"})
 }
 
 item_name_to_id: Dict[str, int] = {name: base_id + index for name, index in enumerate(item_table)}
