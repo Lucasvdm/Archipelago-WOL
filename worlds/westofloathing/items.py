@@ -168,7 +168,7 @@ item_table: Dict[str, WOLItemData] = {
     "Sloppy Chef's Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
     "Sloppy Cowboy Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
     "Sloppy Tophat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
-    "Smoldering Leather Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
+    "Smoldering Leather Hat": WOLItemData(ItemClassification.progression, {"Gear", "Hats", "Cold Resistance"}),
     "Spittoon Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
     "Strange Head Sack": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
     "Stripey Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
@@ -198,13 +198,13 @@ item_table: Dict[str, WOLItemData] = {
     "Goblin Trousers": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
     "Infernal Breeches": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
     "Inflexible Chaps": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
-    "Kitchen Pants": WOLItemData(ItemClassification.progression, {"Gear", "Pants", "Stench Resistance", "Hot Resistance"}),
+    "Kitchen Pants": WOLItemData(ItemClassification.progression, {"Gear", "Pants", "Stench Resistance", "Hot Resistance", "Cold Resistance"}),
     "Kneeling Pants": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
     "Kurtzfit Pants": WOLItemData(ItemClassification.progression, {"Gear", "Pants"}),
     "Magician's Pants": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
     "Miner's Pants": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
     "Old Silk Trousers": WOLItemData(ItemClassification.useful, {"Gear", "Pants", "Prog Loot"}),
-    "Smoldering Leather Pants": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
+    "Smoldering Leather Pants": WOLItemData(ItemClassification.progression, {"Gear", "Pants", "Cold Resistance"}),
     "Somethingskin Pants": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
     "Spit-Soaked Pants": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
     "Thick Chaps": WOLItemData(ItemClassification.useful, {"Gear", "Pants"}),
@@ -508,7 +508,7 @@ item_table: Dict[str, WOLItemData] = {
     "Cowseye": WOLItemData(ItemClassification.progression, {"Miscellany"}),
     "Delicate Bean-Iron Nugget": WOLItemData(ItemClassification.progression, {"Miscellany"}, 3),
     "Dense Bean-Iron Nugget": WOLItemData(ItemClassification.progression, {"Miscellany"}, 3),
-    "Disturbing Portrait": WOLItemData(ItemClassification.progression, {"Miscellany", "Stench Resistance", "Hot Resistance"}),
+    "Disturbing Portrait": WOLItemData(ItemClassification.progression, {"Miscellany", "Stench Resistance", "Hot Resistance", "Cold Resistance"}),
     "Effluvious Emerald Ring": WOLItemData(ItemClassification.progression, {"Miscellany"}),
     "Elaborate Puzzle Box": WOLItemData(ItemClassification.useful, {"Miscellany"}),
     "Handful Of Old Coins": WOLItemData(ItemClassification.filler, {"Miscellany"}),
@@ -547,7 +547,7 @@ item_table: Dict[str, WOLItemData] = {
     "Bottle Of Laudanum x6": WOLItemData(ItemClassification.filler, {"Consumables", "Potions"}),
     "Unrefined Meat Nugget x4": WOLItemData(ItemClassification.filler, {"Miscellany"}),
     "Bundle Of Bones": WOLItemData(ItemClassification.filler, {"Miscellany"}),
-    "Ghost Pickle x3": WOLItemData(ItemClassification.progression, {"Consumables", "Food", "Stench Resistance", "Hot Resistance"}),
+    "Ghost Pickle x3": WOLItemData(ItemClassification.progression, {"Consumables", "Food", "Stench Resistance", "Hot Resistance", "Cold Resistance"}),
     "\"Cotton Candy\"": WOLItemData(ItemClassification.filler, {"Consumables", "Food"}),
     "Dynamite x5": WOLItemData(ItemClassification.filler, {"Consumables", "Combat"}),
     "Dynamite x10": WOLItemData(ItemClassification.filler, {"Consumables", "Combat"}),
@@ -595,7 +595,8 @@ item_table: Dict[str, WOLItemData] = {
     "Spider Ring": WOLItemData(ItemClassification.filler, {"Gear", "Rings"}, is_dlc=True),
     "Manley's Finest Cotton Candy Schnapps": WOLItemData(ItemClassification.filler, {"Consumables", "Booze"}, is_dlc=True),
     "Magic-Infused Salad": WOLItemData(ItemClassification.filler, {"Consumables", "Food"}, is_dlc=True),
-    "NE North Central Logging Permit": WOLItemData(ItemClassification.progression, {"Quest Items"})
+    "NE North Central Logging Permit": WOLItemData(ItemClassification.progression, {"Quest Items"}),
+    "Ghost Coach To Gun Manor": WOLItemData(ItemClassification.progression, {"Miscellany"}, is_dlc=True)
 }
 
 item_name_to_id: Dict[str, int] = {name: base_id + index for name, index in enumerate(item_table)}
@@ -621,7 +622,8 @@ item_categories = {
     "Miscellany",
     "Necromancer Clues",
     "Stench Resistance",
-    "Hot Resistance"
+    "Hot Resistance",
+    "Cold Resistance"
 }
 
 item_name_groups: Dict[str, Set[str]] = {}

@@ -24,11 +24,12 @@ def saved_murray(state: CollectionState, world: "WOLWorld") -> bool:
             #state.has("Percussive Maintenance", player) and
             state.has("El Vibrato Headband", player))
 
-def has_stench_resistance(state: CollectionState, world: "WOLWorld") -> bool:
+#Resistance buffs that apply to all types and aren't covered by an item category
+#Clownwort pollen, Mirrorbeans, and Uncanny Presence
+def has_common_resistance(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
 
     return (
-            state.has_group("Stench Resistance", player) or
             (
              state.has("Desert Eatin' And Drinkin'", player) and #For foraging clownwort pollen
              (
@@ -38,13 +39,16 @@ def has_stench_resistance(state: CollectionState, world: "WOLWorld") -> bool:
               state.can_reach_region("Olive Garden's Homestead", player)
              )
             ) or
-            (
-             can_cook(state, world) and saved_murray(state, world) #Can make Mirrorbeans at level 3
-            ) or
+            can_cook(state, world) and saved_murray(state, world) or #Can cook Mirrorbeans at level 3
+            state.has("Advanced Beancraft", player, 8)
             #Could get Uncanny Presence with fewer of these, 5 guarantees you have the option -
             #but you could still choose something else, so need all 8 to guarantee that you have the perk
-            state.has("Advanced Beancraft", player, 8)
            )
+
+def has_stench_resistance(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return state.has_group("Stench Resistance", player) or has_common_resistance(state, world)
 
 def has_hot_resistance(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
@@ -56,22 +60,18 @@ def has_hot_resistance(state: CollectionState, world: "WOLWorld") -> bool:
              state.can_reach_region("Soupstock Lode", player) and
              (state.has("Monkey Wrench", player) or state.has("Percussive Maintenance", player))
             ) or
-            (
-             state.has("Desert Eatin' And Drinkin'", player) and #For foraging clownwort pollen
-             (
-              state.can_reach_region("Map Region C", player) or
-              state.can_reach_region("Circus", player) or
-              state.can_reach_region("Lazy-A Dude Ranch", player) or
-              state.can_reach_region("Olive Garden's Homestead", player)
-             )
-            ) or
-            (
-             can_cook(state, world) and saved_murray(state, world) #Can make Mirrorbeans at level 3
-            ) or
-            #Could get Uncanny Presence with fewer of these, 5 guarantees you have the option -
-            #but you could still choose something else, so need all 8 to guarantee that you have the perk
-            state.has("Advanced Beancraft", player, 8) or
+            has_common_resistance(state, world) or
             (state.has("Varmint Skinnin' Knife", player) and state.can_reach_region("Map Region F", player))
+            #Can also get it from Beer-Battered Hot Dogs but those are easily missable and would be a pain for logic
+           )
+
+def has_cold_resistance(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return (
+            state.has_group("Cold Resistance", player) or
+            state.can_reach_region("Roy Bean's House", player) or
+            has_common_resistance(state, world)
             #Can also get it from Beer-Battered Hot Dogs but those are easily missable and would be a pain for logic
            )
 
@@ -81,16 +81,18 @@ def can_get_breadwood_lumber(state: CollectionState, world: "WOLWorld") -> bool:
     if not state.can_reach_region("Breadwood", player): return False
 
     count = 1 #The cemetery quest is basically free, at least as far as AP logic goes
-    count += (state.has("NE North Central Logging Permit", player) +
-        state.has("Breadwood's Missing Mail", player) +
-        state.has("Half A Ton Of Yeast", player) +
-        state.has("Forty Loaves Of Bread", player) +
-        state.has("Overdue Breadwood Book", player) +
-        (state.has("Overdue Breadwood Book x5", player) and
-         state.can_reach_region("Soupstock Lode", player) and
-         (state.has("Monkey Wrench", player) or state.has("Percussive Maintenance", player)) #and
-         #has_hot_resistance(state, world)) #This IS a requirement but basically short circuits because you can farm it in soupstock lode
-        )
+    count += (
+              state.has("NE North Central Logging Permit", player) +
+              state.has("Breadwood's Missing Mail", player) +
+              state.has("Half A Ton Of Yeast", player) +
+              state.has("Forty Loaves Of Bread", player) +
+              state.has("Overdue Breadwood Book", player) +
+              (state.has("Overdue Breadwood Book x5", player) and
+               state.can_reach_region("Soupstock Lode", player) and
+               (state.has("Monkey Wrench", player) or state.has("Percussive Maintenance", player)) #and
+               #has_hot_resistance(state, world)) #This IS a requirement but basically short circuits because you can farm it in soupstock lode
+              )
+             )
 
     return count >= 5
 
@@ -106,7 +108,7 @@ def can_build_bridge(state: CollectionState, world: "WOLWorld") -> bool:
 
 def set_region_rules(world: "WOLWorld") -> None:
     player = world.player
-    #options = world.options
+    options = world.options
 
     world.get_entrance("Dirtwater -> Tony's Boots").access_rule = \
         lambda state: (state.can_reach_region("Fort of Darkness", player) and
@@ -166,6 +168,22 @@ def set_region_rules(world: "WOLWorld") -> None:
                         state.can_reach_region("Hellstrom Ranch", player)))
     world.get_entrance("Miscellany -> Master Cookery Crafting").access_rule = \
         lambda state: can_cook(state, world)
+
+    if options.dlc_enabled:
+        world.get_entrance("Dirtwater -> Gun Manor").access_rule = \
+            lambda state: state.has("Ghost Coach To Gun Manor", player)
+        world.get_entrance("Gun Manor -> Gun Manor Carriage House").access_rule = \
+            lambda state: (state.has("Gun Manor Carriage House Key", player) or
+                           state.has("Locks And How To Pick Them", player))
+        #By default can also use a can of kerosene + a match (both widely available), or the starting Beanslinger skill Lava Fava,
+        #in place of the small blowtorch. But I'm not sure how to handle those things yet, and the blowtorch has no other purpose,
+        #so for now I'll call it a hard requirement.
+        world.get_entrance("Gun Manor First Floor -> Gun Manor Second Floor").access_rule = \
+            lambda state: has_cold_resistance(state, world) and state.has("Small Blowtorch", player)
+        world.get_entrance("Gun Manor Second Floor -> Gun Manor Third Floor").access_rule = \
+            lambda state: state.has("Elevator Button", player)
+        world.get_entrance("Gun Manor Billiards Room -> Gun Manor Belfry").access_rule = \
+            lambda state: state.has("Attic-Opening Stick", player)
 
 def set_location_rules(world: "WOLWorld") -> None:
     player = world.player
