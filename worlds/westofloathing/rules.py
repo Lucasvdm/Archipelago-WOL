@@ -158,9 +158,27 @@ def set_region_rules(world: "WOLWorld") -> None:
 
     world.get_entrance("Silversmith's House -> The Silver Plater").access_rule = \
         lambda state: state.has("Locks And How To Pick Them", player)
+
+    world.get_entrance("Circus -> Circus (Inside)").access_rule = \
+        lambda state: state.has("Circus Ticket", player)
     
     world.get_entrance("Railroad Camp (East) -> Railroad Camp (West)").access_rule = \
         lambda state: state.has("A Year's Supply Of Dynamite", player)
+
+    world.get_entrance("Alexandria Ranch -> Alexandria Ranch Vault").access_rule = \
+        lambda state: (state.can_reach_region("Fort Treason", player) and
+                       state.has("Fort Treason Ballistics Chart", player) and
+                       state.has("Artillery Targeting Flare", player) and
+                       state.has("Demi-Culverin Cannonball", player))
+
+    world.get_entrance("Jumbleneck Mine -> Jumbleneck Mine (Inside)").access_rule = \
+        lambda state: (state.has("Jumbleneck Mine Elevator Key", player) or
+                       state.has("Locks And How To Pick Them", player))
+
+    world.get_entrance("Curious Abandoned Well -> Curious Abandoned Well Facility").access_rule = \
+        lambda state: (state.has("A Length Of Rope", player) and
+                       state.can_reach_location("El Vibrato Ruin - Cylinder", player) and
+                       state.has("El Vibrato Cylinder", player)) #What if you've only gotten one and used it somewhere else?
 
     world.get_entrance("Postal Way Station -> Chuck's House").access_rule = \
         lambda state: state.has("Postal Code Sheet", player)
@@ -337,3 +355,152 @@ def set_location_rules(world: "WOLWorld") -> None:
                             (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
                             has_elv_keystone_source(state, world) and
                             has_elv_battery_source(state, world)))
+    set_rule(world.get_location("Fort Alldead - Trash Can"),
+             lambda state: has_stench_resistance(state, world))
+    set_rule(world.get_location("Fort Alldead Barracks - Bottom-Right Footlocker"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Lazy-A Dude Ranch - Dreads Dude Hat Trade"),
+             lambda state: state.has("Old Patrol Cap", player))
+    set_rule(world.get_location("Lazy-A Dude Ranch - Cowsbane Harvest"),
+             lambda state: (state.has("Packet Of Cowsbane Seeds", player) and
+                            state.has("Silver-Plated Barbed Wire", player)))
+    set_rule(world.get_location("Abandoned Pickle Factory - Puzzle Solved"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("Humming Cave - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Circus - Slide Whistle Reward"),
+             lambda state: state.has("Slide Whistle", player))
+    set_rule(world.get_location("Circus Kid - Lucky Cap Trade"),
+             lambda state: state.has("Balloon", player))
+    set_rule(world.get_location("Circus - Survived the Main Act"),
+             lambda state: state.has("Circus Show Ticket", player))
+    set_rule(world.get_location("Circus - Barnaby Bob's Safe"),
+             lambda state: (state.can_reach_region("Fort Alldead", player) and
+                            state.has("Toy Skeletons", player)))
+    set_rule(world.get_location("Ghostwood - Ghost Cactus"),
+             lambda state: state.has("Ghostwood Visitor's Permit", player))
+    set_rule(world.get_location("Ghostwood - Sharpened Pencil"),
+             lambda state: state.has("Ghost Pencil", player))
+    set_rule(world.get_location("Ghostwood Town Hall - Issued ID"),
+             lambda state: state.has("Sharpened Ghost Pencil", player))
+    set_rule(world.get_location("Ghostwood Office Supply - Stapler"),
+             lambda state: state.has("Ghostwood Visitor's ID", player))
+    set_rule(world.get_location("Ghostwood Jail - Stapled Report"),
+             lambda state: state.has("Ghost Stapler", player))
+    set_rule(world.get_location("Ghostwood Stable - Got IDDTF"),
+             lambda state: state.has("Breadwood Logging Report", player))
+    set_rule(world.get_location("Ghostwood Salooooon - Staple Remover"),
+             lambda state: state.has("Breadwood Logging Report Folder", player))
+    set_rule(world.get_location("Ghostwood Town Hall - The Final Form"),
+             lambda state: state.has("Ghost Staple Remover", player))
+    set_rule(world.get_location("Ghostwood Town Hall - Permit Finally Processed"),
+             lambda state: state.has("Breadwood Logging Permit Forms", player))
+    set_rule(world.get_location("Ghostwood Salooooon - Whiskey Bottle"),
+             lambda state: state.has("Ghostwood Visitor's ID", player))
+    set_rule(world.get_location("Soupstock Lode (Level 1) - Workbench Toolbox (Item 1)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Soupstock Lode (Level 1) - Workbench Toolbox (Item 2)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Soupstock Lode (Level 1) - Bean-Iron Deposit (Bottom Left)"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("El Vibrato Chamber (Soupstock Lode) - Chest"),
+             lambda state: ((state.has("Percussive Maintenance", player) or state.has("Monkey Wrench", player)) and
+                            state.has("Pickaxe", player) and
+                            state.has("El Vibrato Transponder", player) and
+                            has_elv_keystone_source(state, world)))
+    set_rule(world.get_location("Fort Memoriam Barracks - Trash Pile"),
+             lambda state: has_stench_resistance(state, world))
+    set_rule(world.get_location("Alexandria Ranch Vault - Glass Case (Right)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Alexandria Ranch Vault - Glass Case (Middle)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Alexandria Ranch Vault - Glass Case (Left)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Curly's Cairn - Under the Cairn"),
+             lambda state: state.has("Curly's Compass", player))
+    set_rule(world.get_location("Roy Bean's House - Honey Bean"),
+             lambda state: state.can_reach_region("Frisco", player))
+    set_rule(world.get_location("Jelly Bean Thieves' Hideout - Crate Beside Bed"),
+             lambda state: state.has("Crowbar", player))
+    set_rule(world.get_location("Shroomcave - First Magic Mushroom"),
+             lambda state: (state.has("Mycology, Yourcology", player) and
+                            state.has("Mushroom Plucking Pliers", player)))
+    set_rule(world.get_location("Shroomcave - Second Magic Mushroom"),
+             lambda state: (state.has("Mycology, Yourcology", player) and
+                            state.has("Mushroom Plucking Pliers", player)))
+    set_rule(world.get_location("Shroomcave - Third Magic Mushroom"),
+             lambda state: (state.has("Mycology, Yourcology", player) and
+                            state.has("Mushroom Plucking Pliers", player)))
+    set_rule(world.get_location("Shroomcave (Hidden Lounge) - Lava Lamp"),
+             lambda state: (state.has("Lactarius Dirtihippica mushroom x4", player) and
+                            state.can_reach_region("Fort of Darkness", player))) #To trade for Dirtihippica extract
+    set_rule(world.get_location("Shroomcave (Hidden Lounge) - Jellybean Jar"),
+             lambda state: (state.has("Lactarius Dirtihippica mushroom x4", player) and
+                            state.can_reach_region("Fort of Darkness", player))) #To trade for Dirtihippica extract
+    set_rule(world.get_location("Fort of Darkness (First Tent) - Free Mushroom"),
+             lambda state: state.has("Mind Your Meat", player))
+    set_rule(world.get_location("Fort of Darkness (Fifth Tent) - Gun Safe"),
+             lambda state: state.has("Get Crackin': A Guide To Modern Safes", player))
+    set_rule(world.get_location("Fort of Darkness - Temporal Rift"),
+             lambda state: state.has("Key-Shaped El Vibrato Device", player))
+    set_rule(world.get_location("Fort Treason Barracks - Top-Left Footlocker"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Fort Treason Barracks - Top-Right Footlocker (Item 1)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Fort Treason Barracks - Top-Right Footlocker (Item 2)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Fort Treason Barracks - Bottom-Right Footlocker"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Jumbleneck Mine - Grease Barrel"),
+             lambda state: state.has("Paper Bag", player))
+    set_rule(world.get_location("Jumbleneck Mine Foreman's Office - Safe (Item 1)"),
+             lambda state: (state.has("Silver-Toothed Skull", player) or
+                            state.has("Get Crackin': A Guide To Modern Safes", player)))
+    set_rule(world.get_location("Jumbleneck Mine Foreman's Office - Safe (Item 2)"),
+             lambda state: (state.has("Silver-Toothed Skull", player) or
+                            state.has("Get Crackin': A Guide To Modern Safes", player)))
+    set_rule(world.get_location("Jumbleneck Mine (Left Tunnel) - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Jumbleneck Mine (Right Tunnel) - Idol"),
+             lambda state: (state.has("Unstable Stick Of Dynamite", player) and
+                            state.has("Bag Of Grease", player)))
+    set_rule(world.get_location("Curious Abandoned Well Facility (Secondary Storage) - Top Chest"),
+             lambda state: has_elv_keystone_source(state, world))
+    set_rule(world.get_location("Curious Abandoned Well Facility (Secondary Storage) - Bottom Chest"),
+             lambda state: has_elv_keystone_source(state, world))
+    set_rule(world.get_location("Reboot Hill (Plot 1) - Wise Ol' Jed Marmot's Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("Reboot Hill (Plot 1) - Big Bob Hurlingham's Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("Reboot Hill (Plot 2) - Dink 'Scotch' Terkinson's Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("Reboot Hill (Plot 2) - Fred Deeks' Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("Reboot Hill (Plot 2) - Annette Jangle's Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("Reboot Hill (Plot 2) - Fancy Tomb (Middle)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Reboot Hill (Plot 2) - Fancy Tomb (Right)"),
+             lambda state: state.has("Get Crackin': A Guide To Modern Safes", player))
+    set_rule(world.get_location("Reboot Hill (Plot 3) - Paulette Tootsbury's Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("Reboot Hill (Plot 3) - Outhouse"),
+             lambda state: has_stench_resistance(state, world))
+    set_rule(world.get_location("Reboot Hill (Plot 3) - Stanrietta Minkleston's Grave"),
+             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("ReBoot Hill - Tontine Treasure Chest"),
+             lambda state: (state.has("Key Fragment 1", player) and
+                            state.has("Key Fragment 2", player) and
+                            state.has("Key Fragment 3", player)))
+    set_rule(world.get_location("The West Pole - Leftmost Cairn (Dr. Morton's Quest)"),
+             lambda state: state.can_reach_region("Frisco", player))
+    set_rule(world.get_location("Temporal Nexus - Camaro"),
+             lambda state: state.has("Key-Shaped El Vibrato Device", player))
+    set_rule(world.get_location("Temporal Nexus - Stagecoach"),
+             lambda state: state.has("Key-Shaped El Vibrato Device", player))
+    set_rule(world.get_location("Temporal Nexus - Robot"),
+             lambda state: state.has("Key-Shaped El Vibrato Device", player))
+    set_rule(world.get_location("Temporal Nexus - Jawbone"),
+             lambda state: state.has("Key-Shaped El Vibrato Device", player))
+    set_rule(world.get_location("The Great Garbanzo's Hideout - Bean-Iron Nugget"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))

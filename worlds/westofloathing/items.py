@@ -456,7 +456,7 @@ item_table: Dict[str, WOLItemData] = {
     "Overdue Breadwood Book": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Owl Camera": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Packrat Skeleton": WOLItemData(ItemClassification.useful, {"Quest Items"}),
-    "Paper Bag": WOLItemData(ItemClassification.useful, {"Quest Items"}),
+    "Paper Bag": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Passenger Car Key": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Photo Of L'ardest": WOLItemData(ItemClassification.progression, {"Quest Items"}, is_dlc=True),
     "Picture Of Mary Stearns": WOLItemData(ItemClassification.useful, {"Quest Items"}),
@@ -532,7 +532,7 @@ item_table: Dict[str, WOLItemData] = {
     "Stock Certificate x3": WOLItemData(ItemClassification.filler, {"Miscellany"}, 2),
     "Human Ashes x2": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Cheap Wine x11": WOLItemData(ItemClassification.filler, {"Consumables", "Booze"}),
-    "Sulphur Match x4": WOLItemData(ItemClassification.progression, {"Consumables", "Combat"}),
+    "Sulphur Match x4": WOLItemData(ItemClassification.progression, {"Consumables", "Combat"}), #TODO: Replace with an infinite matchbook only usable for check requirements?
     "Military Medical Supplies": WOLItemData(ItemClassification.filler, {"Consumables", "Combat", "Booze"}),
     "Decent Booze": WOLItemData(ItemClassification.filler, {"Consumables", "Booze"}),
     "Cheap Booze": WOLItemData(ItemClassification.filler, {"Consumables", "Booze"}),
@@ -598,7 +598,10 @@ item_table: Dict[str, WOLItemData] = {
     "NE North Central Logging Permit": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Ghost Coach To Gun Manor": WOLItemData(ItemClassification.progression, {"Miscellany"}, is_dlc=True),
     "English-Goblintongue Dictionary": WOLItemData(ItemClassification.progression, {"Books"}),
-    "Can Of Oil": WOLItemData(ItemClassification.progression, {"Miscellany"})
+    "Can Of Oil": WOLItemData(ItemClassification.progression, {"Miscellany"}),
+    "Packet Of Cowsbane Seeds": WOLItemData(ItemClassification.progression, {"Quest Items"}),
+    "Lactarius Dirtihippica mushroom x4": WOLItemData(ItemClassification.progression, {"Consumables", "Food", "Quest Items"}),
+    "Silver-Toothed Skull": WOLItemData(ItemClassification.progression, {"Quest Items"})
 }
 
 item_name_to_id: Dict[str, int] = {name: base_id + index for name, index in enumerate(item_table)}
