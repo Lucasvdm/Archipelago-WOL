@@ -190,6 +190,10 @@ def set_region_rules(world: "WOLWorld") -> None:
         lambda state: (state.has("Mint Mint Jellybeans", player) and
                        state.has("Green Green Apple Jellybeans", player))
 
+    world.get_entrance("Madness Maw Mine -> El Vibrato Outpost (MMM)").access_rule = \
+        lambda state: (state.has("El Vibrato Transponder", player) and
+                       state.has("Pickaxe", player))
+
     world.get_entrance("Railroad Camp (West) -> Necromancer's Tower").access_rule = \
         lambda state: (state.has_group("Necromancer Clues", player, 5) and
                        state.can_reach_region("The Perfessor's House", player) and
@@ -201,11 +205,19 @@ def set_region_rules(world: "WOLWorld") -> None:
     world.get_entrance("Frisco -> Wasco's Comedy Shack").access_rule = \
         lambda state: state.has("Comedy Flier", player)
 
+    world.get_entrance("Abandoned Mine -> Abandoned Mine (Inside)").access_rule = \
+        lambda state: ((state.has("Can Of Oil", player) and state.has("Monkey Wrench", player)) or
+                       state.has("Percussive Maintenance", player))
+
     world.get_entrance("Dr. Morton's House -> Old Cave").access_rule = \
         lambda state: state.has("Interesting Rock", player)
 
     world.get_entrance("Map Region H -> Curious False Mountain").access_rule = \
         lambda state: state.has("El Vibrato Transponder", player)
+
+    world.get_entrance("Deepest Delve Mine -> Deepest Delve Mine (Elevator Fixed)").access_rule = \
+        lambda state: ((state.has("Can Of Kerosene", player) and state.has("Gas Cap", player)) or
+                       state.has("Percussive Maintenance", player))
 
     world.get_entrance("Miscellany -> Leatherworkery Crafting").access_rule = \
         lambda state: (state.has("Burned Leatherworking Manual", player) and
@@ -332,6 +344,8 @@ def set_location_rules(world: "WOLWorld") -> None:
                             state.has("Get Crackin': A Guide To Modern Safes", player)))
     set_rule(world.get_location("The Silver Plater - Plated Barbed Wire"),
              lambda state: state.has("Big Coil Of Barbed Wire", player))
+    set_rule(world.get_location("Lost Dutch Oven Mine - Sluice"),
+             lambda state: state.can_reach_region("Snakepit Mine", player))
     set_rule(world.get_location("Lost Dutch Oven Mine (Level 1) - Lockers (Item 1)"),
              lambda state: has_stench_resistance(state, world))
     set_rule(world.get_location("Lost Dutch Oven Mine (Level 1) - Lockers (Item 2)"),
@@ -502,5 +516,125 @@ def set_location_rules(world: "WOLWorld") -> None:
              lambda state: state.has("Key-Shaped El Vibrato Device", player))
     set_rule(world.get_location("Temporal Nexus - Jawbone"),
              lambda state: state.has("Key-Shaped El Vibrato Device", player))
-    set_rule(world.get_location("The Great Garbanzo's Hideout - Bean-Iron Nugget"),
+    set_rule(world.get_location("The Great Garbanzo's Hideout - Bean-Iron Deposit"),
              lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Buffalo Pile (Sleeping Quarters) - Left Footlocker (Item 1)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Buffalo Pile (Sleeping Quarters) - Left Footlocker (Item 2)"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Buffalo Pile (Sleeping Quarters) - Right Footlocker"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Buffalo Pile Locker Key", player)))
+    set_rule(world.get_location("Madness Maw Mine (Level 2) - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Madness Maw Mine (Curly's Cave) - Nightstand"),
+             lambda state: state.has("Curly's Auto-Gyrotheodolite", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Madness Maw Mine (Curly's Cave) - Pie Safe"),
+             lambda state: state.has("Curly's Auto-Gyrotheodolite", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Madness Maw Mine (Level 4) - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Kellogg Ranch (Main Building) - Loose Floorboard"),
+             lambda state: state.has("Crowbar", player))
+    set_rule(world.get_location("Kellogg Ranch (Office) - Animal Skeleton"),
+             lambda state: state.can_reach_region("Petting Cemetery", player))
+    set_rule(world.get_location("Kellogg Ranch (Dormitory) - First Locker (Item 1)"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Kellogg Ranch (Dormitory) - First Locker (Item 2)"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Kellogg Ranch (Dormitory) - Second Locker"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Kellogg Ranch (Dormitory) - Fourth Locker"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Kellogg Ranch (Dormitory) - Fifth Locker"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Kellogg Ranch (Dormitory) - Sixth Locker (Item 1)"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Kellogg Ranch (Dormitory) - Sixth Locker (Item 2)"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Kellogg Ranch (Kitchen) - Dough Baked"),
+             lambda state: state.has("Bag Of Mixed Grain", player))
+    set_rule(world.get_location("Kellogg Ranch (Barn) - Barbed Wire"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Kellogg Ranch (Barn) - Grain Pile"),
+             lambda state: (state.has("Locks And How To Pick Them", player) or
+                            state.has("Kellogg Ranch Keyring", player)))
+    set_rule(world.get_location("Fort Unnecessary - Time Portal"),
+             lambda state: state.has("Key-Shaped El Vibrato Device", player))
+    set_rule(world.get_location("Abandoned Mine - Drywasher"),
+             lambda state: state.can_reach_region("Snakepit Mine", player))
+    set_rule(world.get_location("Abandoned Mine (Inside) - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Abandoned Mine (Side Tunnel 1) - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Abandoned Mine (Side Tunnel 2) - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Abandoned Mine (Side Tunnel 2) - Drilling Machine"),
+             lambda state: (state.can_reach_region("Frisco", player) and
+                            state.can_reach_region("Dr. Morton's House", player) and
+                            state.has("Interesting Rock", player) and
+                            state.has("Weird Rock Sample", player)))
+    set_rule(world.get_location("El Vibrato Storage Room - Card Table (Item 1)"),
+             lambda state: state.has("El Vibrato Transponder", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("El Vibrato Storage Room - Card Table (Item 2)"),
+             lambda state: state.has("El Vibrato Transponder", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("El Vibrato Storage Room - Cylinder"),
+             lambda state: state.has("El Vibrato Transponder", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("Morton's Quarry (Tiny Diverticulum) - Hex Puzzle"),
+             lambda state: (state.can_reach_region("Frisco", player) and
+                            state.can_reach_region("Dr. Morton's House", player) and
+                            state.has("Interesting Rock", player) and
+                            state.has("Weird Rock Sample", player) and
+                            state.has("High-Tech Drill Bit", player)))
+    set_rule(world.get_location("Morton's Quarry - Dr. Morton's Quest Completion"),
+             lambda state: (state.can_reach_region("Frisco", player) and
+                            state.can_reach_region("Dr. Morton's House", player) and
+                            state.has("Interesting Rock", player) and
+                            state.has("Weird Rock Sample", player) and
+                            state.has("High-Tech Drill Bit", player)))
+    set_rule(world.get_location("Jeweler's Cabin - Coal"),
+             lambda state: state.has("Superdense Coal", player))
+    set_rule(world.get_location("Jeweler's Cabin - Sapphire"),
+             lambda state: state.has("Cool Sapphire", player))
+    set_rule(world.get_location("Jeweler's Cabin - Cowseye"),
+             lambda state: state.has("Cowseye", player))
+    set_rule(world.get_location("Jeweler's Cabin - Diamond"),
+             lambda state: state.has("Massive Diamond", player))
+    set_rule(world.get_location("Jeweler's Cabin - Emerald"),
+             lambda state: state.has("Effluvious Emerald", player))
+    set_rule(world.get_location("Jeweler's Cabin - Ruby"),
+             lambda state: state.has("Unbreakable Ruby", player))
+    set_rule(world.get_location("Jeweler's Cabin - Silicon"),
+             lambda state: state.has("Strange Silvery Crystal", player))
+    set_rule(world.get_location("Jeweler's Cabin - Diorite"),
+             lambda state: state.has("Polished Diorite", player))
+    set_rule(world.get_location("Jeweler's Cabin - Spectacles"),
+             lambda state: state.can_reach_region("Fort Unnecessary", player))
+    set_rule(world.get_location("El Vibrato Chamber (Curious False Mountain) - Chronokey Fabrication"),
+             lambda state: state.has("El Vibrato Cylinder", player))
+    set_rule(world.get_location("Alamo Rent-A-Mule - Rented a Mule"),
+             lambda state: state.can_reach_region("Fort Unnecessary", player))
+    set_rule(world.get_location("Curious Flat Plain - Garbage Return"),
+             lambda state: state.has("El Vibrato Cylinder", player))
+    set_rule(world.get_location("Deepest Delve Mine (Alt Entrance) - Bean-Iron Deposit"),
+             lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
+    set_rule(world.get_location("El Vibrato Control Center - El Vibrato Quest Completion"),
+             lambda state: (state.has("Pickaxe", player) and
+                            state.has("El Vibrato Cross", player) and
+                            state.can_reach_region("Curious False Mountain", player) and
+                            state.can_reach_region("Curious Flat Plain", player) and
+                            state.has("El Vibrato Cylinder", player, 2)))
+    set_rule(world.get_location("Halloway's Hideaway - Half of Curly's Map"),
+             lambda state: (state.has("Left Half Of Curly's Map", player) and
+                            state.has("Halloway's Pin", player)))
+    set_rule(world.get_location("Halloway's Hideaway - X Marks the Spot"),
+             lambda state: (state.has("Left Half Of Curly's Map", player) and
+                            state.has("Right Half Of Curly's Map", player) and
+                            state.has("Shovel", player)))
