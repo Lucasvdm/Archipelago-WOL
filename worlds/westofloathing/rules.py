@@ -4,6 +4,18 @@ from BaseClasses import CollectionState
 if TYPE_CHECKING:
     from . import WOLWorld
 
+def can_leatherwork(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return (
+            state.has("Burnt Leatherworking Manual", player) and
+            (
+             state.has("A Portable Leatherwork Bench", player) or
+             state.can_reach_region("Hellstrom Ranch", player)
+            ) and
+            state.has("Varmint Skinnin' Knife", player) #Not technically a requirement for everything but reasonable to expect
+           )
+
 def can_cook(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
 
@@ -220,9 +232,7 @@ def set_region_rules(world: "WOLWorld") -> None:
                        state.has("Percussive Maintenance", player))
 
     world.get_entrance("Miscellany -> Leatherworkery Crafting").access_rule = \
-        lambda state: (state.has("Burned Leatherworking Manual", player) and
-                       (state.has("A Portable Leatherwork Bench", player) or
-                        state.can_reach_region("Hellstrom Ranch", player)))
+        lambda state: can_leatherwork(state, world)
     world.get_entrance("Miscellany -> Master Cookery Crafting").access_rule = \
         lambda state: can_cook(state, world)
 
@@ -638,3 +648,102 @@ def set_location_rules(world: "WOLWorld") -> None:
              lambda state: (state.has("Left Half Of Curly's Map", player) and
                             state.has("Right Half Of Curly's Map", player) and
                             state.has("Shovel", player)))
+
+    set_rule(world.get_location("Random Encounter (Region A) - Murder Pepper"),
+             lambda state: state.has("Shaker Of Saltpeter", player))
+
+    set_rule(world.get_location("Rufus' Gifts - Gift 1"),
+             lambda state: state.has("Blank Postcard", player))
+    set_rule(world.get_location("Rufus' Gifts - Gift 2"),
+             lambda state: state.has("Blank Postcard", player, 2))
+    set_rule(world.get_location("Rufus' Gifts - Gift 3"),
+             lambda state: state.has("Blank Postcard", player, 3))
+    set_rule(world.get_location("Rufus' Gifts - Gift 4"),
+             lambda state: state.has("Blank Postcard", player, 4))
+    set_rule(world.get_location("Rufus' Gifts - Gift 5"),
+             lambda state: state.has("Blank Postcard", player, 5))
+    set_rule(world.get_location("Opened Charred Locket"),
+             lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Magic-Infused Leaf Crafting - 3 Leaves"),
+             lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
+    set_rule(world.get_location("Magic-Infused Leaf Crafting - 5 Leaves"),
+             lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
+    set_rule(world.get_location("Magic-Infused Leaf Crafting - 7 Leaves"),
+             lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
+    set_rule(world.get_location("Spider Part Crafting - 4 Piles"),
+             lambda state: state.can_reach_region("Gun Manor Cellar", player))
+    set_rule(world.get_location("Spider Part Crafting - 6 Piles"),
+             lambda state: state.can_reach_region("Gun Manor Cellar", player))
+    set_rule(world.get_location("Spider Part Crafting - 8 Piles"),
+             lambda state: state.can_reach_region("Gun Manor Cellar", player))
+
+    #Same deal here as with the El Vibrato cylinders, not sure yet how to track which checks you've used the
+    #unique nuggets for since there are multiple options per -- requiring one then 2 then 3 isn't right but works for now
+    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Item 1)"),
+             lambda state: state.has("Bean-Iron Nugget", player))
+    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Item 2)"),
+             lambda state: state.has("Bean-Iron Nugget", player, 2))
+    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Item 3)"),
+             lambda state: state.has("Bean-Iron Nugget", player, 3))
+    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Item 1)"),
+             lambda state: state.has("Dense Bean-Iron Nugget", player))
+    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Item 2)"),
+             lambda state: state.has("Dense Bean-Iron Nugget", player, 2))
+    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Item 3)"),
+             lambda state: state.has("Dense Bean-Iron Nugget", player, 3))
+    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Item 1)"),
+             lambda state: state.has("Delicate Bean-Iron Nugget", player))
+    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Item 2)"),
+             lambda state: state.has("Delicate Bean-Iron Nugget", player, 2))
+    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Item 3)"),
+             lambda state: state.has("Delicate Bean-Iron Nugget", player, 3))
+
+    if options.dlc_enabled:
+        set_rule(world.get_location("Desert House - Macready's Grave"),
+             lambda state: (state.has("Basics Of Gun law", player) and
+                            state.has("Duel Law", player) and
+                            state.has("1878 Nautical Almanac", player)))
+
+        set_rule(world.get_location("Back of Gun Manor - Compost Heap"),
+             lambda state: has_stench_resistance(state, world))
+        set_rule(world.get_location("Gun Manor Carriage House - Lathe"),
+             lambda state: state.has("Wobbly Billiards Cue", player))
+        set_rule(world.get_location("Gun Manor Visitor Center - Photo"),
+             lambda state: (state.has("Basics Of Gun law", player) and
+                            state.has("Duel Law", player) and
+                            state.has("1878 Nautical Almanac", player) and
+                            state.has("Shovel", player) and
+                            state.has("Macready's Pocketwatch", player)))
+        set_rule(world.get_location("Gun Manor Visitor Center - SouvenIRS Stand"),
+             lambda state: (state.can_reach_region("Mr. Gun's Manliness Room", player) and
+                            state.has("Shower Curtain", player)))
+        set_rule(world.get_location("Gun Manor Laboratory - Workbench"),
+             lambda state: (state.has("Wad Of Stuffing", player) and
+                            state.has("1.2337\" Diameter Tin Can", player)))
+        set_rule(world.get_location("Gun Manor Laboratory - Workbench"),
+             lambda state: state.has("Mrs. Gun's Blueprint", player))
+        set_rule(world.get_location("Gun Manor Parlor - Sofa Cushions (Murdered Chili)"),
+             lambda state: (state.can_reach_region("Gun Manor Dining Room", player) and
+                            state.has("Chili Sin Pistoles", player)))
+        set_rule(world.get_location("Gun Manor Kitchen - Spice Rack"),
+             lambda state: state.can_reach_region("Gun Manor Dining Room", player))
+        set_rule(world.get_location("Gun Manor Parlor - Sofa Cushions (Murdered Chili)"),
+             lambda state: (state.can_reach_region("Gun Manor Dining Room", player) and
+                            state.can_reach_region("Gun Manor Library", player) and
+                            state.has("Chili Spices", player) and
+                            state.has("A Pile Of Loose Chili Beans", player)))
+        set_rule(world.get_location("Gun Manor Larder - Right Shelf"),
+             lambda state: state.can_reach_region("Gun Manor Laboratory", player))
+        set_rule(world.get_location("Gun Manor Library - Fun Law Returned"),
+             lambda state: state.has("Fun Law: Rules For Parlor Games", player))
+        set_rule(world.get_location("Gun Manor Library - Duelling Banjos Returned"),
+             lambda state: state.has("Duelling Banjos", player))
+        set_rule(world.get_location("Gun Manor Art Gallery - Clock Noon Objection"),
+             lambda state: (state.has("Basics Of Gun law", player) and
+                            state.has("Duel Law", player)))
+        set_rule(world.get_location("Gun Manor Art Gallery - Lawyer Quest Completion"),
+             lambda state: (state.has("Basics Of Gun law", player) and
+                            state.has("Duel Law", player) and
+                            state.has("1878 Nautical Almanac", player) and
+                            state.has("Shovel", player) and
+                            state.has("Macready's Pocketwatch", player)))
