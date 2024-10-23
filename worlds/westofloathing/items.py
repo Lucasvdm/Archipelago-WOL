@@ -604,7 +604,7 @@ item_table: Dict[str, WOLItemData] = {
     "Silver-Toothed Skull": WOLItemData(ItemClassification.progression, {"Quest Items"})
 }
 
-item_name_to_id: Dict[str, int] = {name: base_id + index for name, index in enumerate(item_table)}
+item_name_to_id: Dict[str, int] = {name: base_id + index for index, name in enumerate(item_table)}
 
 item_categories = {
     "Gear",
