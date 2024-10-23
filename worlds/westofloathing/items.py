@@ -471,7 +471,7 @@ item_table: Dict[str, WOLItemData] = {
     "Right Half Of Curly's Map": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Robe Receipt": WOLItemData(ItemClassification.progression, {"Quest Items", "Necromancer Clues"}),
     "Santa Cortada's Skull": WOLItemData(ItemClassification.progression, {"Quest Items"}),
-    "Sauté Knife": WOLItemData(ItemClassification.progression, {"Quest Items"}),
+    "Saute Knife": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Shaker Of Saltpeter": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Sharpened Ghost Pencil": WOLItemData(ItemClassification.progression, {"Quest Items"}),
     "Shaving Cream Pie": WOLItemData(ItemClassification.useful, {"Quest Items"}),
