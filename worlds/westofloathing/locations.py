@@ -60,6 +60,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Danny's Tannery - Center Fight (Item 1)": WOLLocationData("Danny's Tannery", "Danny's Tannery"),
     "Danny's Tannery - Center Fight (Item 2)": WOLLocationData("Danny's Tannery", "Danny's Tannery"),
     "Danny's Tannery - Center Skeleton": WOLLocationData("Danny's Tannery", "Danny's Tannery"),
+    "Danny's Tannery (St. Rage Shed) - Grady's Cowsbane Seeds": WOLLocationData("Danny's Tannery", "Danny's Tannery"),
     "Stearns Ranch - Smoking Flower": WOLLocationData("Stearns Ranch", "Stearns Ranch"),
     "Stearns Ranch - Outhouse Beast Defeated": WOLLocationData("Stearns Ranch", "Stearns Ranch"),
     "Stearns Ranch - Jethro's Bones": WOLLocationData("Stearns Ranch", "Stearns Ranch"),

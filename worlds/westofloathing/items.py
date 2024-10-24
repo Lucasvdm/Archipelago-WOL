@@ -513,7 +513,7 @@ item_table: Dict[str, WOLItemData] = {
     "Elaborate Puzzle Box": WOLItemData(ItemClassification.useful, {"Miscellany"}),
     "Handful Of Old Coins": WOLItemData(ItemClassification.filler, {"Miscellany"}),
     "Hanky": WOLItemData(ItemClassification.filler, {"Miscellany"}),
-    #"Herbal Remedy": WOLItemData(ItemClassification.filler, {"Miscellany"}),
+    "Herbal Remedy": WOLItemData(ItemClassification.filler, {"Miscellany"}),
     "Infernal Soul Fragment": WOLItemData(ItemClassification.filler, {"Miscellany"}),
     "Jaw Harp": WOLItemData(ItemClassification.useful, {"Miscellany"}),
     "Miniature Piano": WOLItemData(ItemClassification.useful, {"Miscellany"}),
