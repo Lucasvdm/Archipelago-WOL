@@ -231,9 +231,9 @@ def set_region_rules(world: "WOLWorld") -> None:
         lambda state: ((state.has("Can Of Kerosene", player) and state.has("Gas Cap", player)) or
                        state.has("Percussive Maintenance", player))
 
-    world.get_entrance("Miscellany -> Leatherworkery Crafting").access_rule = \
+    world.get_entrance("Miscellaneous -> Leatherworkery Crafting").access_rule = \
         lambda state: can_leatherwork(state, world)
-    world.get_entrance("Miscellany -> Master Cookery Crafting").access_rule = \
+    world.get_entrance("Miscellaneous -> Master Cookery Crafting").access_rule = \
         lambda state: can_cook(state, world)
 
     if options.dlc_enabled:
