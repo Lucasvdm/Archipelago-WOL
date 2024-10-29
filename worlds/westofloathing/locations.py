@@ -136,7 +136,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Old Mission Catacombs - Cemented Skull Pile": WOLLocationData("Old Mission", "Old Mission"),
     "Old Mission Catacombs - Trash Pile": WOLLocationData("Old Mission", "Old Mission"),
     "Old Mission Catacombs - Saint Beefus Defeated (Item 1)": WOLLocationData("Old Mission", "Old Mission"),
-    "Old Mission Catacombs - Saint Beefus Defeated (Item 1)": WOLLocationData("Old Mission", "Old Mission"),
+    "Old Mission Catacombs - Saint Beefus Defeated (Item 2)": WOLLocationData("Old Mission", "Old Mission"),
     "Old Mission Catacombs - Santa Cortada Defeated (Item 1)": WOLLocationData("Old Mission", "Old Mission"),
     "Old Mission Catacombs - Santa Cortada Defeated (Item 2)": WOLLocationData("Old Mission", "Old Mission"),
     "Old Mission Catacombs - Saint Pope Defeated (Item 1)": WOLLocationData("Old Mission", "Old Mission"),
