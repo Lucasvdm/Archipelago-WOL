@@ -190,6 +190,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Circus Lost & Found - Item 2": WOLLocationData("Circus (Inside)", "Circus"),
     "Circus Lost & Found - Item 3": WOLLocationData("Circus (Inside)", "Circus"),
     "Circus Lost & Found - Item 4": WOLLocationData("Circus (Inside)", "Circus"),
+    "Circus - Stole the Slide Whistle": WOLLocationData("Circus (Inside)", "Circus"),
     "Circus - Slide Whistle Reward": WOLLocationData("Circus (Inside)", "Circus"),
     "Circus Kid - Lucky Cap Trade": WOLLocationData("Circus (Inside)", "Circus"),
     "Circus - Survived the Main Act": WOLLocationData("Circus (Inside)", "Circus"),

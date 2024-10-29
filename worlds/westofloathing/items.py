@@ -567,7 +567,7 @@ item_table: Dict[str, WOLItemData] = {
     "El Vibrato Scraps x8": WOLItemData(ItemClassification.filler, {"Quest Items"}),
     "El Vibrato Scraps x45": WOLItemData(ItemClassification.useful, {"Quest Items"}),
     "Skeleton Bone x4": WOLItemData(ItemClassification.filler, {"Miscellany"}),
-    "Needle x5": WOLItemData(ItemClassification.progression, {"Miscellany"}, 2),
+    "Needle x5": WOLItemData(ItemClassification.progression, {"Miscellany"}, 3),
     "Jar Of Moonshine": WOLItemData(ItemClassification.filler, {"Consumables", "Booze"}),
     "Jar Of Peanut Butter": WOLItemData(ItemClassification.filler, {"Consumables", "Food"}),
     "Goat Steak": WOLItemData(ItemClassification.filler, {"Consumables", "Food"}),
