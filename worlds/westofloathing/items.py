@@ -110,7 +110,7 @@ item_table: Dict[str, WOLItemData] = {
     "Smoldering Leather Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
     "Spit-Soaked Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
     "Thick Leather Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
-    "Tony's Bear-Soaked Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
+    "Tony's Beer-Soaked Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
     "Tony's Enchanted Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
     "Tony's Inscribed Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
     "Tony's Meaty Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
