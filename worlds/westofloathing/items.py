@@ -268,7 +268,7 @@ item_table: Dict[str, WOLItemData] = {
     "Serpentine Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
     "Silicon Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
     "Special Magic Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
-    "Thaumomoprhic Diorite Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
+    "Thaumomorphic Diorite Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
     "Unbreakable Ruby Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
     "Artillery Saber": WOLItemData(ItemClassification.useful, {"Gear", "Melee", "Prog Loot"}),
     "Balanced Billiards Cue": WOLItemData(ItemClassification.progression, {"Gear", "Melee"}, is_dlc=True),
