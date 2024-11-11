@@ -91,7 +91,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Cavern Canyon - Stripey Hat Gang Killed": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
     "Cavern Canyon Bar - Bartender's Bones": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
     "Cavern Canyon Bar - Behind the Bar": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
-    "Cavern Canyon Kitchen - Doug Rescued": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
+    #"Cavern Canyon Kitchen - Doug Rescued": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
     "Fort Cowardice Mess Hall - Table (Item 1)": WOLLocationData("Fort Cowardice", "Fort Cowardice"),
     "Fort Cowardice Mess Hall - Table (Item 2)": WOLLocationData("Fort Cowardice", "Fort Cowardice"),
     "Fort Cowardice Mess Hall - Spice Rack": WOLLocationData("Fort Cowardice", "Fort Cowardice"),
