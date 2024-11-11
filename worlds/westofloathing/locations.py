@@ -88,7 +88,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Cavern Canyon Spider Cave - Weapens Box": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
     "Cavern Canyon Spider Cave - Medisun Box": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
     "Cavern Canyon Spider Cave - Booze Box": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
-    "Cavern Canyon - Stripey Hat Gang Killed (Item 2)": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
+    "Cavern Canyon - Stripey Hat Gang Killed": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
     "Cavern Canyon Bar - Bartender's Bones": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
     "Cavern Canyon Bar - Behind the Bar": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
     "Cavern Canyon Kitchen - Doug Rescued": WOLLocationData("Cavern Canyon", "Cavern Canyon"),
