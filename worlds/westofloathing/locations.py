@@ -360,6 +360,7 @@ location_table: Dict[str, WOLLocationData] = {
     "El Vibrato Outpost (Madness Maw Mine) - Cards": WOLLocationData("El Vibrato Outpost (MMM)", "Madness Maw Mine"),
     "El Vibrato Outpost (Madness Maw Mine) - Trash Pile": WOLLocationData("El Vibrato Outpost (MMM)", "Madness Maw Mine"),
     "El Vibrato Outpost (Madness Maw Mine) - Vending Machine (SOMFUKRO)": WOLLocationData("El Vibrato Outpost (MMM)", "Madness Maw Mine"),
+    "El Vibrato Outpost (Madness Maw Mine) - Vending Machine (SOMZAKBUNOK)": WOLLocationData("El Vibrato Outpost (MMM)", "Madness Maw Mine"),
     "El Vibrato Outpost (Madness Maw Mine) - Vending Machine (ZEVENOKKRO)": WOLLocationData("El Vibrato Outpost (MMM)", "Madness Maw Mine"),
     "El Vibrato Outpost (Madness Maw Mine) - Vending Machine (BUKUZKRO)": WOLLocationData("El Vibrato Outpost (MMM)", "Madness Maw Mine"),
     "Kellogg Ranch (Main Building) - Loose Floorboard": WOLLocationData("Kellogg Ranch", "Kellogg Ranch"),
