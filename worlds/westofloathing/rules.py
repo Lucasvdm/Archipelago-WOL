@@ -742,8 +742,12 @@ def set_location_rules(world: "WOLWorld") -> None:
              lambda state: (state.has("Basics Of Gun law", player) and
                             state.has("Duel Law", player)))
         set_rule(world.get_location("Gun Manor Art Gallery - Lawyer Quest Completion"),
-             lambda state: (state.has("Basics Of Gun law", player) and
+             lambda state: (state.has("Basics Of Gun Law", player) and
                             state.has("Duel Law", player) and
                             state.has("1878 Nautical Almanac", player) and
                             state.has("Shovel", player) and
                             state.has("Macready's Pocketwatch", player)))
+        set_rule(world.get_location("Gun Manor Billiards Room - Pool Table"), #Not a hard requirement, but the chalk and textbook don't have another use and this is necessary for the peaceful ghost resolution
+             lambda state: (state.has("Balanced Billiards Cue", player) and
+                            state.has("Blue Chalk", player) and
+                            state.has("Geometry Textbook", player)))
