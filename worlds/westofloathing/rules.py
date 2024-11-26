@@ -751,3 +751,5 @@ def set_location_rules(world: "WOLWorld") -> None:
              lambda state: (state.has("Balanced Billiards Cue", player) and
                             state.has("Blue Chalk", player) and
                             state.has("Geometry Textbook", player)))
+        set_rule(world.get_location("Gun Manor Nursery - Crib"),
+             lambda state: state.has("Blank Sheet Music", player))
