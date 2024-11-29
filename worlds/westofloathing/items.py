@@ -517,7 +517,7 @@ item_table: Dict[str, WOLItemData] = {
     "Jaw Harp": WOLItemData(ItemClassification.useful, {"Miscellany"}),
     "Miniature Piano": WOLItemData(ItemClassification.useful, {"Miscellany"}),
     "Personalized Gun Manor Shotglass": WOLItemData(ItemClassification.useful, {"Miscellany"}, is_dlc=True),
-    #"Pocketknife": WOLItemData(ItemClassification.filler, {"Miscellany"}),
+    "Pocketknife": WOLItemData(ItemClassification.filler, {"Miscellany"}),
     "Polished Diorite": WOLItemData(ItemClassification.progression, {"Miscellany"}),
     "Puzzle Cube": WOLItemData(ItemClassification.filler, {"Miscellany"}),
     "Shovel": WOLItemData(ItemClassification.progression, {"Miscellany"}),
