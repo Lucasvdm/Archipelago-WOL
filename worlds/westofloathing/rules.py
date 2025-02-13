@@ -679,23 +679,23 @@ def set_location_rules(world: "WOLWorld") -> None:
 
     #Same deal here as with the El Vibrato cylinders, not sure yet how to track which checks you've used the
     #unique nuggets for since there are multiple options per -- requiring one then 2 then 3 isn't right but works for now
-    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Item 1)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Badge)"),
              lambda state: state.has("Bean-Iron Nugget", player))
-    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Item 2)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Skillet)"),
              lambda state: state.has("Bean-Iron Nugget", player, 2))
-    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Item 3)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 1 (Spatula)"),
              lambda state: state.has("Bean-Iron Nugget", player, 3))
-    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Item 1)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Collander)"),
              lambda state: state.has("Dense Bean-Iron Nugget", player))
-    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Item 2)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Ladle)"),
              lambda state: state.has("Dense Bean-Iron Nugget", player, 2))
-    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Item 3)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 2 (Saucepan)"),
              lambda state: state.has("Dense Bean-Iron Nugget", player, 3))
-    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Item 1)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Kettle)"),
              lambda state: state.has("Delicate Bean-Iron Nugget", player))
-    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Item 2)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Shootin' Iron)"),
              lambda state: state.has("Delicate Bean-Iron Nugget", player, 2))
-    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Item 3)"),
+    set_rule(world.get_location("Master Cookery Crafting - Level 3 (Whisk)"),
              lambda state: state.has("Delicate Bean-Iron Nugget", player, 3))
 
     if options.dlc_enabled:
