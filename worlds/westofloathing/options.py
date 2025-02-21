@@ -12,6 +12,8 @@ class EnableDLC(DefaultOnToggle):
 
 @dataclass
 class WOLOptions(PerGameCommonOptions):
+    start_inventory_from_pool: StartInventoryPool
+
     dlc_enabled: EnableDLC
 
 wol_option_groups = [

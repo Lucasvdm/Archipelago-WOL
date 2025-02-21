@@ -3,7 +3,7 @@ from typing import List, Dict
 from BaseClasses import Item, Location, Tutorial, ItemClassification, Region
 from worlds.AutoWorld import WebWorld, World
 from .options import wol_option_groups, wol_option_presets, WOLOptions
-from .items import item_table, item_name_groups, item_name_to_id
+from .items import item_table, item_name_groups, item_name_to_id, extra_filler_list
 from .locations import location_table, location_name_groups, location_name_to_id
 from .regions import region_table
 from .rules import set_location_rules, set_region_rules
@@ -51,6 +51,9 @@ class WOLWorld(World):
 
     item_name_to_id = item_name_to_id
     location_name_to_id = location_name_to_id
+
+    def get_filler_item_name(self) -> str:
+        return self.random.choice(extra_filler_list)
 
     def create_item(self, name: str, classification: ItemClassification = None) -> WOLItem:
         item_data = item_table[name]
