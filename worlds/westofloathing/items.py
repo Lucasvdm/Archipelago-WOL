@@ -6,6 +6,7 @@ class WOLItemData(NamedTuple):
     categories: Set[str] = {}
     copies_in_pool: int = 1
     is_dlc: bool = False
+    default_starting_gear: bool = False
     extras_eligible: bool = False
 
 base_id = 752813602
@@ -32,7 +33,7 @@ item_table: Dict[str, WOLItemData] = {
     "Perfumed Pocket Square": WOLItemData(ItemClassification.progression, {"Gear", "Lapel", "Prog Loot", "Stench Resistance"}),
     "Purple Brain Pin": WOLItemData(ItemClassification.useful, {"Gear", "Lapel"}),
     "Reinforced Pocket Square": WOLItemData(ItemClassification.useful, {"Gear", "Lapel", "Prog Loot"}),
-    "Replica Sherf Badge": WOLItemData(ItemClassification.useful, {"Gear", "Lapel"}),
+    "Replica Sherf Badge": WOLItemData(ItemClassification.useful, {"Gear", "Lapel"}, default_starting_gear=True),
     "Revolting Brooch": WOLItemData(ItemClassification.useful, {"Gear", "Lapel"}),
     "Rifleman Insignia Pin": WOLItemData(ItemClassification.useful, {"Gear", "Lapel"}),
     "Rusty Deputy Badge": WOLItemData(ItemClassification.useful, {"Gear", "Lapel"}),
@@ -121,7 +122,7 @@ item_table: Dict[str, WOLItemData] = {
     "Wet Boots": WOLItemData(ItemClassification.progression, {"Gear", "Boots", "Hot Resistance"}),
     "Work Boots": WOLItemData(ItemClassification.useful, {"Gear", "Boots"}),
     "Arcane Geode Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
-    "Barely-Enchanted Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
+    "Barely-Enchanted Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}, default_starting_gear=True),
     "Battered Old Top Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
     "Bean-Iron Collander": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
     "Bear Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
@@ -144,8 +145,8 @@ item_table: Dict[str, WOLItemData] = {
     "Enchanted Buffalo Skull": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
     "Extra-Black Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
     "Fake Pope Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
-    "Floppy Derby": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
-    "Four-Gallon Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
+    "Floppy Derby": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}, default_starting_gear=True),
+    "Four-Gallon Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}, default_starting_gear=True),
     "Funerary Derby": WOLItemData(ItemClassification.useful, {"Gear", "Hats", "Prog Loot"}),
     "Gasmask": WOLItemData(ItemClassification.progression, {"Gear", "Hats", "Stench Resistance"}),
     "General Gob's Hat": WOLItemData(ItemClassification.useful, {"Gear", "Hats"}),
@@ -216,7 +217,7 @@ item_table: Dict[str, WOLItemData] = {
     "Bean-Iron Shootin' Iron": WOLItemData(ItemClassification.useful, {"Gear", "Pistols"}),
     "Befouled Pistol": WOLItemData(ItemClassification.useful, {"Gear", "Pistols"}),
     "Cookin' Pistol": WOLItemData(ItemClassification.useful, {"Gear", "Pistols"}),
-    "Deputy Pistol": WOLItemData(ItemClassification.useful, {"Gear", "Pistols"}),
+    "Deputy Pistol": WOLItemData(ItemClassification.useful, {"Gear", "Pistols"}, default_starting_gear=True),
     "Desert Gang's Sixgun": WOLItemData(ItemClassification.useful, {"Gear", "Pistols"}),
     "El Vibrato Pistol": WOLItemData(ItemClassification.useful, {"Gear", "Pistols", "Prog Loot"}),
     "General Gob's Pistol": WOLItemData(ItemClassification.useful, {"Gear", "Pistols"}),
@@ -256,7 +257,7 @@ item_table: Dict[str, WOLItemData] = {
     "Lodestone Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings", "Prog Loot"}),
     "Meat-Stained Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
     "Military School Class Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings", "Prog Loot"}),
-    "Nasty Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
+    "Nasty Ring": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}, default_starting_gear=True),
     "Old Engagement Ring": WOLItemData(ItemClassification.filler, {"Gear", "Rings", "Prog Loot"}, extras_eligible=True),
     "Ring Of Gettin' Places Faster": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
     "Ring Of Inconspicuousness": WOLItemData(ItemClassification.useful, {"Gear", "Rings"}),
@@ -281,7 +282,7 @@ item_table: Dict[str, WOLItemData] = {
     "Bone Sword": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}),
     "Bowling Pin": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}, is_dlc=True),
     "Brass Knuckles": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}),
-    "Broken Board": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}),
+    "Broken Board": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}, default_starting_gear=True),
     "Bush Whacker": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}, is_dlc=True),
     "Cactus Club": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}),
     "Clown Knife": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}),
@@ -603,6 +604,7 @@ item_table: Dict[str, WOLItemData] = {
     "Silver-Toothed Skull": WOLItemData(ItemClassification.progression, {"Quest Items"})
 }
 
+starting_gear_list: List[str] = [name for name, data in item_table.items() if data.default_starting_gear]
 extra_filler_list: List[str] = [name for name, data in item_table.items() if data.extras_eligible]
 
 item_name_to_id: Dict[str, int] = {name: base_id + index for index, name in enumerate(item_table)}

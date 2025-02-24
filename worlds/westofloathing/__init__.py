@@ -3,7 +3,7 @@ from typing import List, Dict
 from BaseClasses import Item, Location, Tutorial, ItemClassification, Region
 from worlds.AutoWorld import WebWorld, World
 from .options import wol_option_groups, wol_option_presets, WOLOptions
-from .items import item_table, item_name_groups, item_name_to_id, extra_filler_list
+from .items import item_table, item_name_groups, item_name_to_id, starting_gear_list, extra_filler_list
 from .locations import location_table, location_name_groups, location_name_to_id
 from .regions import region_table
 from .rules import set_location_rules, set_region_rules
@@ -64,6 +64,10 @@ class WOLWorld(World):
         items_to_create: Dict[str, int] = {item: data.copies_in_pool for item, data in item_table.items()}
 
         #Logic for modifying the item pool contents based on options and such will go here
+
+        if not self.options.start_inventory_from_pool:
+            for item in starting_gear_list:
+                items_to_create[item] -= 1
 
         for item, quantity in items_to_create.items():
             for _ in range(quantity):
