@@ -1,5 +1,5 @@
 import settings
-from typing import List, Dict
+from typing import List, Dict, Any
 from BaseClasses import Item, Location, Tutorial, ItemClassification, Region
 from worlds.AutoWorld import WebWorld, World
 from .options import wol_option_groups, wol_option_presets, WOLOptions
@@ -98,3 +98,10 @@ class WOLWorld(World):
     def set_rules(self) -> None:
         set_region_rules(self)
         set_location_rules(self)
+
+    def fill_slot_data(self) -> Dict[str, Any]:
+        slot_data: Dict[str, Any] = {
+            "dlc_enabled": self.options.dlc_enabled
+        }
+
+        return slot_data
