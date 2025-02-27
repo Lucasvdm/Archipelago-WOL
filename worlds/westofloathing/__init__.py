@@ -101,7 +101,7 @@ class WOLWorld(World):
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {
-            "dlc_enabled": self.options.dlc_enabled
+            "dlc_enabled": self.options.dlc_enabled.value
         }
 
         return slot_data
