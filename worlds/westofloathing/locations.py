@@ -487,7 +487,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Gun Manor Tween Room - Wardrobe": WOLLocationData("Gun Manor Tween Room", "Gun Manor Children's Quarters", is_dlc=True),
     "Gun Manor Tween Room - Under the Bed": WOLLocationData("Gun Manor Tween Room", "Gun Manor Children's Quarters", is_dlc=True),
     "Mrs. Gun's Room - Display Case": WOLLocationData("Mrs. Gun's Room", "Mrs. Gun's Room", is_dlc=True),
-    "Mrs. Gun's Room - All Ghosts Settled Peacefully": WOLLocationData("Mrs. Gun's Room", "Mrs. Gun's Room", is_dlc=True),
+    "Mrs. Gun's Room - Peaceful Solution": WOLLocationData("Mrs. Gun's Room", "Mrs. Gun's Room", is_dlc=True),
     "Gun Manor Belfry - Science Box": WOLLocationData("Gun Manor Belfry", "Gun Manor Belfry", is_dlc=True),
     "Wanderin' Sally's Camp - Item 1": WOLLocationData("Wanderin' Sally's Camp", "Wanderin' Sally's Camp"),
     "Wanderin' Sally's Camp - Item 2": WOLLocationData("Wanderin' Sally's Camp", "Wanderin' Sally's Camp"),
