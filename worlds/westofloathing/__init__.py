@@ -69,6 +69,9 @@ class WOLWorld(World):
             for item in starting_gear_list:
                 items_to_create[item] -= 1
 
+        if not self.options.randomize_ghost_coach:
+            items_to_create["Ghost Coach To Gun Manor"] = 0
+
         for item, quantity in items_to_create.items():
             for _ in range(quantity):
                 wol_items.append(self.create_item(item))
@@ -101,7 +104,8 @@ class WOLWorld(World):
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {
-            "dlc_enabled": self.options.dlc_enabled.value
+            "dlc_enabled": self.options.dlc_enabled.value,
+            "randomize_ghost_coach": self.options.randomize_ghost_coach.value
         }
 
         return slot_data
