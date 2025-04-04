@@ -3,14 +3,13 @@ from typing import Dict, Set
 #Note: Access paths do not always correlate to the in-game map regions
 #Some map regions (e.g. C) have multiple possible initial access points that need to link back to the region for wandering
 #Without map/entrance rando, many of these could be condensed into larger groups
-region_table: Dict[str, Set[str]] = {
+basegame_region_table: Dict[str, Set[str]] = {
     "Menu": {"Your Family's Farm"},
     "Your Family's Farm": {"Dirtwater"},
     "Dirtwater": {"Map Region A", "Railroad Camp (East)", "Desert House", "Cavern Canyon", "The Potemkin Gang",
                   "Old Millinery", "Abandoned Pickle Factory", "The Daveyard", "Fort Cowardice",
                   "The Perfessor's House", "Rescue Mission", "Tony's Boots", "Murray's Curiosity & Bean",
-                  "Grady's Fine Leather Goods", "Alexandria's Bookstore", "Fort Alldead", "Miscellaneous",
-                  "Gun Manor"},
+                  "Grady's Fine Leather Goods", "Alexandria's Bookstore", "Fort Alldead", "Miscellaneous"},
     "Map Region A": {"Shaggy Dog Cave", "Silversmith's House", "Stearns Ranch", "Snakepit Mine", "The Daveyard",
                      "Buttonwillow's Store", "Fort Cowardice", "Wanderin' Sally's Camp", "Random Encounters A"},
     "Railroad Camp (East)": {"Map Region B", "Gustavson Gulch", "Buttonwillow's Store", "Railroad Camp (West)"},
@@ -127,7 +126,10 @@ region_table: Dict[str, Set[str]] = {
     "Miscellaneous": {"Leatherworkery Crafting", "Master Cookery Crafting", "Progressive Containers"},
     "Leatherworkery Crafting": set(),
     "Master Cookery Crafting": set(),
-    "Progressive Containers": set(),
+    "Progressive Containers": set()
+}
+
+dlc_region_table: Dict[str, Set[str]] = {
     "Gun Manor": {"Gun Manor Hedge Maze", "Gun Manor Carriage House", "Gun Manor Visitor Center",
                   "Gun Manor First Floor"},
     "Gun Manor Hedge Maze": {"Gun Manor Cellar"},

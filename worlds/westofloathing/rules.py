@@ -237,8 +237,9 @@ def set_region_rules(world: "WOLWorld") -> None:
         lambda state: can_cook(state, world)
 
     if options.dlc_enabled:
-        world.get_entrance("Dirtwater -> Gun Manor").access_rule = \
-            lambda state: state.has("Ghost Coach To Gun Manor", player)
+        if options.randomize_ghost_coach:
+            world.get_entrance("Dirtwater -> Gun Manor").access_rule = \
+                lambda state: state.has("Ghost Coach To Gun Manor", player)
         world.get_entrance("Gun Manor -> Gun Manor Carriage House").access_rule = \
             lambda state: (state.has("Gun Manor Carriage House Key", player) or
                            state.has("Locks And How To Pick Them", player))
@@ -664,18 +665,6 @@ def set_location_rules(world: "WOLWorld") -> None:
              lambda state: state.has("Blank Postcard", player, 5))
     set_rule(world.get_location("Opened Charred Locket"),
              lambda state: state.has("Locks And How To Pick Them", player))
-    set_rule(world.get_location("Magic-Infused Leaf Crafting - 3 Leaves"),
-             lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
-    set_rule(world.get_location("Magic-Infused Leaf Crafting - 5 Leaves"),
-             lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
-    set_rule(world.get_location("Magic-Infused Leaf Crafting - 7 Leaves"),
-             lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
-    set_rule(world.get_location("Spider Part Crafting - 4 Piles"),
-             lambda state: state.can_reach_region("Gun Manor Cellar", player))
-    set_rule(world.get_location("Spider Part Crafting - 6 Piles"),
-             lambda state: state.can_reach_region("Gun Manor Cellar", player))
-    set_rule(world.get_location("Spider Part Crafting - 8 Piles"),
-             lambda state: state.can_reach_region("Gun Manor Cellar", player))
 
     #Same deal here as with the El Vibrato cylinders, only need one for each of these locations but need to guarantee all 3 are accessible before spending on any given check
     set_rule(world.get_location("Master Cookery Crafting - Level 1 (Badge)"),
@@ -752,3 +741,16 @@ def set_location_rules(world: "WOLWorld") -> None:
                             state.has("Geometry Textbook", player)))
         set_rule(world.get_location("Gun Manor Nursery - Crib"),
              lambda state: state.has("Blank Sheet Music", player))
+
+        set_rule(world.get_location("Magic-Infused Leaf Crafting - 3 Leaves"),
+                 lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
+        set_rule(world.get_location("Magic-Infused Leaf Crafting - 5 Leaves"),
+                 lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
+        set_rule(world.get_location("Magic-Infused Leaf Crafting - 7 Leaves"),
+                 lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
+        set_rule(world.get_location("Spider Part Crafting - 4 Piles"),
+                 lambda state: state.can_reach_region("Gun Manor Cellar", player))
+        set_rule(world.get_location("Spider Part Crafting - 6 Piles"),
+                 lambda state: state.can_reach_region("Gun Manor Cellar", player))
+        set_rule(world.get_location("Spider Part Crafting - 8 Piles"),
+                 lambda state: state.can_reach_region("Gun Manor Cellar", player))

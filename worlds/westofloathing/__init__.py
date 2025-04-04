@@ -5,7 +5,7 @@ from worlds.AutoWorld import WebWorld, World
 from .options import wol_option_groups, wol_option_presets, WOLOptions
 from .items import item_table, item_name_groups, item_name_to_id, starting_gear_list, extra_filler_list
 from .locations import location_table, location_name_groups, location_name_to_id
-from .regions import region_table
+from .regions import basegame_region_table, dlc_region_table
 from .rules import set_location_rules, set_region_rules
 
 class WOLLocation(Location):
@@ -72,6 +72,11 @@ class WOLWorld(World):
         if not self.options.randomize_ghost_coach:
             items_to_create["Ghost Coach To Gun Manor"] = 0
 
+        if not self.options.dlc_enabled:
+            for item, data in item_table.items():
+                if data.is_dlc:
+                    items_to_create[item] = 0
+
         for item, quantity in items_to_create.items():
             for _ in range(quantity):
                 wol_items.append(self.create_item(item))
@@ -79,6 +84,11 @@ class WOLWorld(World):
         self.multiworld.itempool += wol_items
 
     def create_regions(self) -> None:
+        region_table = basegame_region_table
+        if self.options.dlc_enabled:
+            region_table = basegame_region_table | dlc_region_table
+            region_table["Dirtwater"].add("Gun Manor")
+
         for region_name in region_table:
             region = Region(region_name, self.player, self.multiworld)
             self.multiworld.regions.append(region)
@@ -88,6 +98,8 @@ class WOLWorld(World):
             region.add_exits(exits)
 
         for location_name, location_id in self.location_name_to_id.items():
+            if not self.options.dlc_enabled and location_table[location_name].is_dlc:
+                continue
             region = self.get_region(location_table[location_name].region)
             location = WOLLocation(self.player, location_name, location_id, region)
             region.locations.append(location)
