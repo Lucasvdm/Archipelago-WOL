@@ -18,12 +18,21 @@ class RandomizeGunManorCoach(DefaultOnToggle):
     internal_name = "randomize_ghost_coach"
     display_name = "Randomize Gun Manor Coach"
 
+class RandomizeGoblintongue(DefaultOnToggle):
+    """
+    Randomize the ability to speak Goblintongue into the item pool.
+    If this is disabled, you will always be able to speak Goblintongue from the start.
+    """
+    internal_name = "randomize_goblintongue"
+    display_name = "Randomize Goblintongue"
+
 @dataclass
 class WOLOptions(PerGameCommonOptions):
     start_inventory_from_pool: StartInventoryPool
 
     dlc_enabled: EnableDLC
     randomize_ghost_coach: RandomizeGunManorCoach
+    randomize_goblintongue: RandomizeGoblintongue
 
 wol_option_groups = [
     OptionGroup("Logic Options", [

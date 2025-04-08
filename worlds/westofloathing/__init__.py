@@ -72,6 +72,9 @@ class WOLWorld(World):
         if not self.options.randomize_ghost_coach:
             items_to_create["Ghost Coach To Gun Manor"] = 0
 
+        if not self.options.randomize_goblintongue:
+            items_to_create["English-Goblintongue Dictionary"] = 0
+
         if not self.options.dlc_enabled:
             for item, data in item_table.items():
                 if data.is_dlc:
@@ -117,7 +120,8 @@ class WOLWorld(World):
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {
             "dlc_enabled": self.options.dlc_enabled.value,
-            "randomize_ghost_coach": self.options.randomize_ghost_coach.value
+            "randomize_ghost_coach": self.options.randomize_ghost_coach.value,
+            "randomize_goblintongue": self.options.randomize_goblintongue.value
         }
 
         return slot_data
