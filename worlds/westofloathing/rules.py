@@ -8,7 +8,7 @@ def can_leatherwork(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
 
     return (
-            state.has("Burnt Leatherworking Manual", player) and
+            state.has("Burned Leatherworking Manual", player) and
             (
              state.has("A Portable Leatherwork Bench", player) or
              state.can_reach_region("Hellstrom Ranch", player)
