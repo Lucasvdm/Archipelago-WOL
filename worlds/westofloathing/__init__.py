@@ -84,6 +84,9 @@ class WOLWorld(World):
             for _ in range(quantity):
                 wol_items.append(self.create_item(item))
 
+        for _ in range(len(self.multiworld.get_unfilled_locations(self.player)) - len(wol_items)):
+            wol_items.append(self.create_item(self.get_filler_item_name()))
+
         self.multiworld.itempool += wol_items
 
     def create_regions(self) -> None:
