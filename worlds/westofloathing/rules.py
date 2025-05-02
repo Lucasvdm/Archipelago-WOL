@@ -618,7 +618,7 @@ def set_location_rules(world: "WOLWorld") -> None:
     set_rule(world.get_location("Jeweler's Cabin - Cowseye"),
              lambda state: state.has("Cowseye", player))
     set_rule(world.get_location("Jeweler's Cabin - Diamond"),
-             lambda state: state.has("Massive Diamond", player))
+             lambda state: state.has("Superdense Coal", player))
     set_rule(world.get_location("Jeweler's Cabin - Emerald"),
              lambda state: state.has("Effluvious Emerald", player))
     set_rule(world.get_location("Jeweler's Cabin - Ruby"),
