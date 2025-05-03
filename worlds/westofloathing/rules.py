@@ -27,7 +27,7 @@ def can_cook(state: CollectionState, world: "WOLWorld") -> bool:
             )
            )
 
-def saved_murray(state: CollectionState, world: "WOLWorld") -> bool:
+def can_save_murray(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
 
     return (state.can_reach_region("Lost Dutch Oven Mine", player) and
@@ -51,7 +51,7 @@ def has_common_resistance(state: CollectionState, world: "WOLWorld", checking_fo
               state.can_reach_region("Olive Garden's Homestead", player)
              )
             ) or
-            can_cook(state, world) and not checking_for_murray and saved_murray(state, world) or #Can cook Mirrorbeans at level 3
+            can_cook(state, world) and not checking_for_murray and can_save_murray(state, world) or #Can cook Mirrorbeans at level 3
             state.has("Advanced Beancraft", player, 8)
             #Could get Uncanny Presence with fewer of these, 5 guarantees you have the option -
             #but you could still choose something else, so need all 8 to guarantee that you have the perk
@@ -155,7 +155,7 @@ def set_region_rules(world: "WOLWorld") -> None:
         lambda state: (state.can_reach_region("Fort of Darkness", player) and
                        state.has("A Bunch Of Really Small Guns", player))
     world.get_entrance("Dirtwater -> Murray's Curiosity & Bean").access_rule = \
-        lambda state: saved_murray(state, world)
+        lambda state: can_save_murray(state, world)
     world.get_entrance("Dirtwater -> Grady's Fine Leather Goods").access_rule = \
         lambda state: (state.can_reach_region("Danny's Tannery", player) and
                        state.has("Tannery Back Door Key", player) and

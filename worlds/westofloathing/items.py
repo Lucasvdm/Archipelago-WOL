@@ -347,7 +347,7 @@ item_table: Dict[str, WOLItemData] = {
     "Kickin' Ass And Chewin' Gum": WOLItemData(ItemClassification.useful, {"Books"}),
     "Locks And How To Pick Them": WOLItemData(ItemClassification.progression, {"Books"}),
     "Mind Your Meat": WOLItemData(ItemClassification.progression, {"Books"}),
-    "Modern Snake Oiler": WOLItemData(ItemClassification.progression, {"Books"}, 8),
+    "Modern Snake Oiler": WOLItemData(ItemClassification.useful, {"Books"}, 8),
     "Mycology, Yourcology": WOLItemData(ItemClassification.progression, {"Books"}),
     "Oils I Have Known": WOLItemData(ItemClassification.useful, {"Books"}),
     "Percussive Maintenance": WOLItemData(ItemClassification.progression, {"Books"}),
