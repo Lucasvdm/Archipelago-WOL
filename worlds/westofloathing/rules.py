@@ -31,13 +31,14 @@ def saved_murray(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
 
     return (state.can_reach_region("Lost Dutch Oven Mine", player) and
-            has_stench_resistance(state, world) and
+            has_stench_resistance(state, world, True) and
             (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
             state.has("El Vibrato Headband", player))
 
 #Resistance buffs that apply to all types and aren't covered by an item category
 #Clownwort pollen, Mirrorbeans, and Uncanny Presence
-def has_common_resistance(state: CollectionState, world: "WOLWorld") -> bool:
+#Have to know if we're checking this resistance to see if Murray can be saved, otherwise there's a loop
+def has_common_resistance(state: CollectionState, world: "WOLWorld", checking_for_murray: bool = False) -> bool:
     player = world.player
 
     return (
@@ -50,16 +51,17 @@ def has_common_resistance(state: CollectionState, world: "WOLWorld") -> bool:
               state.can_reach_region("Olive Garden's Homestead", player)
              )
             ) or
-            can_cook(state, world) and saved_murray(state, world) or #Can cook Mirrorbeans at level 3
+            can_cook(state, world) and not checking_for_murray and saved_murray(state, world) or #Can cook Mirrorbeans at level 3
             state.has("Advanced Beancraft", player, 8)
             #Could get Uncanny Presence with fewer of these, 5 guarantees you have the option -
             #but you could still choose something else, so need all 8 to guarantee that you have the perk
            )
 
-def has_stench_resistance(state: CollectionState, world: "WOLWorld") -> bool:
+#Have to know if we're checking this resistance to see if Murray can be saved, otherwise there's a loop
+def has_stench_resistance(state: CollectionState, world: "WOLWorld", checking_for_murray: bool = False) -> bool:
     player = world.player
 
-    return state.has_group("Stench Resistance", player) or has_common_resistance(state, world)
+    return state.has_group("Stench Resistance", player) or has_common_resistance(state, world, checking_for_murray)
 
 def has_hot_resistance(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
