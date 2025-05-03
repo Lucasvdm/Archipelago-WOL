@@ -35,6 +35,19 @@ def can_save_murray(state: CollectionState, world: "WOLWorld") -> bool:
             (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
             state.has("El Vibrato Headband", player))
 
+#For bonus items (from having another shop to the right), need to require all shops to know that any given shop isn't the rightmost,
+#or is the last one so its bonus item check is considered "missed" and sent to the lost & found
+def can_build_all_dirtwater_shops(state: CollectionState, world: "WOLWorld") -> bool:
+    player = world.player
+
+    return ( #Hot Doug's has no hard requirements, can reach it early without any specific items
+            state.can_reach_region("Tony's Boots", player) and
+            state.can_reach_region("Murray's Curiosity & Bean", player) and
+            state.can_reach_region("Grady's Fine Leather Goods", player) and
+            state.can_reach_region("Alexandria's Bookstore", player) and
+            state.can_reach_location("Ol' Schmaltz Brewery - Deceased Yeast Beast", player) #For Liquid Bread Brewing Co.
+           )
+
 #Resistance buffs that apply to all types and aren't covered by an item category
 #Clownwort pollen, Mirrorbeans, and Uncanny Presence
 #Have to know if we're checking this resistance to see if Murray can be saved, otherwise there's a loop
@@ -275,7 +288,14 @@ def set_location_rules(world: "WOLWorld") -> None:
     set_rule(world.get_location("Dirtwater Post Office - P.O. Box 441"),
              lambda state: state.has("Key To P.O. Box 441", player))
 
-    #TODO: Logic for shops' bonus items (have another shop to the right)
+    set_rule(world.get_location("Dirtwater (Tony's Boots) - Bonus Item"),
+             lambda state: can_build_all_dirtwater_shops(state, world))
+    set_rule(world.get_location("Dirtwater (Murray's Curiosity & Bean) - Bonus Item"),
+             lambda state: can_build_all_dirtwater_shops(state, world))
+    set_rule(world.get_location("Dirtwater (Grady's Fine Leather Goods) - Bonus Item"),
+             lambda state: can_build_all_dirtwater_shops(state, world))
+    set_rule(world.get_location("Dirtwater (Alexandria's Bookstore) - Bonus Item"),
+             lambda state: can_build_all_dirtwater_shops(state, world))
 
     set_rule(world.get_location("Shaggy Dog Cave - Bean-Iron Deposit"),
              lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
