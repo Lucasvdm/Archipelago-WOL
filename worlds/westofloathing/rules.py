@@ -691,7 +691,7 @@ def set_location_rules(world: "WOLWorld") -> None:
 
     if options.dlc_enabled:
         set_rule(world.get_location("Desert House - Macready's Grave"),
-             lambda state: (state.has("Basics Of Gun law", player) and
+             lambda state: (state.has("Basics Of Gun Law", player) and
                             state.has("Duel Law", player) and
                             state.has("1878 Nautical Almanac", player)))
 
@@ -700,7 +700,7 @@ def set_location_rules(world: "WOLWorld") -> None:
         set_rule(world.get_location("Gun Manor Carriage House - Lathe"),
              lambda state: state.has("Wobbly Billiards Cue", player))
         set_rule(world.get_location("Gun Manor Visitor Center - Photo"),
-             lambda state: (state.has("Basics Of Gun law", player) and
+             lambda state: (state.has("Basics Of Gun Law", player) and
                             state.has("Duel Law", player) and
                             state.has("1878 Nautical Almanac", player) and
                             state.has("Shovel", player) and
@@ -730,7 +730,7 @@ def set_location_rules(world: "WOLWorld") -> None:
         set_rule(world.get_location("Gun Manor Library - Duelling Banjos Returned"),
              lambda state: state.has("Duelling Banjos", player))
         set_rule(world.get_location("Gun Manor Art Gallery - Clock Noon Objection"),
-             lambda state: (state.has("Basics Of Gun law", player) and
+             lambda state: (state.has("Basics Of Gun Law", player) and
                             state.has("Duel Law", player)))
         set_rule(world.get_location("Gun Manor Art Gallery - Lawyer Quest Completion"),
              lambda state: (state.has("Basics Of Gun Law", player) and

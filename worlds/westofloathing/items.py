@@ -321,7 +321,7 @@ item_table: Dict[str, WOLItemData] = {
     "Ungulith-Horn Gloves": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}),
     "Varmint Skinnin' Knife": WOLItemData(ItemClassification.progression, {"Gear", "Melee"}),
     "Weird Knife": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}),
-    "Wobbly Billiards Cue": WOLItemData(ItemClassification.useful, {"Gear", "Melee"}, is_dlc=True),
+    "Wobbly Billiards Cue": WOLItemData(ItemClassification.progression, {"Gear", "Melee"}, is_dlc=True),
     "Kellogg Grain Flakes": WOLItemData(ItemClassification.progression, {"Consumables", "Food"}),
     "Cheap Cigar": WOLItemData(ItemClassification.progression, {"Consumables", "Potions", "Stench Resistance"}, is_dlc=True),
     "Can Of Kerosene": WOLItemData(ItemClassification.progression, {"Consumables", "Combat"}),
