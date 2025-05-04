@@ -709,6 +709,28 @@ def set_location_rules(world: "WOLWorld") -> None:
     set_rule(world.get_location("Master Cookery Crafting - Level 3 (Whisk)"),
              lambda state: state.has("Delicate Bean-Iron Nugget", player, 3))
 
+    set_rule(world.get_location("Progressive Loot - 3rd Medical Container"),
+             lambda state: state.has("Crowbar", player) or
+                           state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Progressive Loot - 6th Medical Container"),
+             lambda state: state.has("Crowbar", player) or
+                           state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Progressive Loot - 9th Medical Container"),
+             lambda state: state.has("Crowbar", player) or
+                           state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Progressive Loot - 5th El Vibrato Container"),
+             lambda state: state.has("El Vibrato Transponder", player))
+    set_rule(world.get_location("Progressive Loot - 7th El Vibrato Container"),
+             lambda state: state.has("El Vibrato Transponder", player))
+    set_rule(world.get_location("Progressive Loot - 9th El Vibrato Container"),
+             lambda state: state.has("El Vibrato Transponder", player))
+    set_rule(world.get_location("Progressive Loot - 11th El Vibrato Container"),
+             lambda state: state.has("El Vibrato Transponder", player))
+    set_rule(world.get_location("Progressive Loot - 13th El Vibrato Container"),
+             lambda state: state.has("El Vibrato Transponder", player))
+    set_rule(world.get_location("Progressive Loot - 15th El Vibrato Container"),
+             lambda state: state.has("El Vibrato Transponder", player))
+
     if options.dlc_enabled:
         set_rule(world.get_location("Desert House - Macready's Grave"),
              lambda state: (state.has("Basics Of Gun Law", player) and
