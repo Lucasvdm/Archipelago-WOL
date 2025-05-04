@@ -35,9 +35,9 @@ class WOLOptions(PerGameCommonOptions):
     randomize_goblintongue: RandomizeGoblintongue
 
 wol_option_groups = [
-    OptionGroup("Logic Options", [
+    # OptionGroup("Logic Options", [
         
-    ])
+    # ])
 ]
 
 wol_option_presets: Dict[str, Dict[str, Any]] = {
