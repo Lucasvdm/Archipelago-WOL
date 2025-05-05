@@ -330,6 +330,8 @@ def set_location_rules(world: "WOLWorld") -> None:
              lambda state: state.has("Locks And How To Pick Them", player))
     set_rule(world.get_location("Fort Cowardice Back Office - General Gob's Pistol"),
              lambda state: state.has("Locks And How To Pick Them", player))
+    set_rule(world.get_location("Fort Cowardice Back Office - Pie Safe"),
+             lambda state: state.has("Locks And How To Pick Them", player))
     set_rule(world.get_location("Fort Cowardice First Tent - Back-Right Footlocker"),
              lambda state: state.has("Locks And How To Pick Them", player))
     set_rule(world.get_location("Fort Cowardice Math Tent - Safe"),
