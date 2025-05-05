@@ -427,6 +427,8 @@ def set_location_rules(world: "WOLWorld") -> None:
     set_rule(world.get_location("Circus - Barnaby Bob's Safe"),
              lambda state: (state.can_reach_region("Fort Alldead", player) and
                             state.has("Toy Skeletons", player)))
+    set_rule(world.get_location("Breadwood Bunkhouse - Footlocker"),
+             lambda state: state.has("Locks And How To Pick Them", player))
     set_rule(world.get_location("Ghostwood - Ghost Cactus"),
              lambda state: state.has("Ghostwood Visitor's Permit", player))
     set_rule(world.get_location("Ghostwood - Sharpened Pencil"),
