@@ -115,7 +115,10 @@ def has_elv_keystone_source(state: CollectionState, world: "WOLWorld") -> bool:
              has_stench_resistance(state, world) and
              (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player))
             ) or
-            state.can_reach_region("Map Region D", player)
+            ( #Can farm them in the Curious Abandoned Well or from Region D encounters
+             state.can_reach_region("Map Region D", player) and
+             state.has("El Vibrato Transponder", player)
+            )
            )
 
 def has_elv_battery_source(state: CollectionState, world: "WOLWorld") -> bool:
@@ -127,7 +130,10 @@ def has_elv_battery_source(state: CollectionState, world: "WOLWorld") -> bool:
              state.has("El Vibrato Transponder", player) and
              state.has("El Vibrato Device", player)
             ) or
-            state.can_reach_region("Map Region D", player)
+            ( #Can farm them in the Curious Abandoned Well or from Region D encounters
+             state.can_reach_region("Map Region D", player) and
+             state.has("El Vibrato Transponder", player)
+            )
            )
 
 def can_get_breadwood_lumber(state: CollectionState, world: "WOLWorld") -> bool:
@@ -202,6 +208,11 @@ def set_region_rules(world: "WOLWorld") -> None:
     world.get_entrance("Jumbleneck Mine -> Jumbleneck Mine (Inside)").access_rule = \
         lambda state: (state.has("Jumbleneck Mine Elevator Key", player) or
                        state.has("Locks And How To Pick Them", player))
+
+    world.get_entrance("Map Region D -> Curious Copse").access_rule = \
+        lambda state: state.has("El Vibrato Transponder", player)
+    world.get_entrance("Map Region D -> Curious Abandoned Well").access_rule = \
+        lambda state: state.has("El Vibrato Transponder", player)
 
     world.get_entrance("Curious Abandoned Well -> Curious Abandoned Well Facility").access_rule = \
         lambda state: (state.has("A Length Of Rope", player) and
