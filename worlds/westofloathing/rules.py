@@ -355,6 +355,8 @@ def set_location_rules(world: "WOLWorld") -> None:
     if options.randomize_goblintongue:
         set_rule(world.get_location("Gustavson Gulch Storage Hut - Secret Item"),
                 lambda state: state.has("English-Goblintongue Dictionary", player))
+    set_rule(world.get_location("Gustavson Gulch - Cafe Hut"),
+             lambda state: state.has("Locks And How To Pick Them", player))
     set_rule(world.get_location("Gustavson Gulch Treasure Cave - Bottom Chest (Item 1)"),
              lambda state: (state.has("Locks And How To Pick Them", player) and
                             (state.has("Gustavson Gulch Treasure Cave Key", player) or
