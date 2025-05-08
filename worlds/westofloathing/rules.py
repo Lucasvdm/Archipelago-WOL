@@ -294,6 +294,7 @@ def set_location_rules(world: "WOLWorld") -> None:
     set_rule(world.get_location("Dirtwater Saloon - Chef's Quest Complete"),
              lambda state: (state.has("Shaker Of Saltpeter", player) and
                             state.has("Southeast-Western Murder Pepper", player) and
+                            state.has("Saute Knife", player) and
                             state.has("Dave's Secret Sauce Recipe", player)))
     set_rule(world.get_location("Dirtwater Post Office - Postal Codes"),
              lambda state: state.can_reach_region("Postal Way Station", player))
@@ -333,8 +334,11 @@ def set_location_rules(world: "WOLWorld") -> None:
              lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
     set_rule(world.get_location("The Daveyard - First Grave"),
              lambda state: state.has("Shovel", player))
-    set_rule(world.get_location("The Daveyard - Dave J's Grave"),
-             lambda state: state.has("Shovel", player))
+    set_rule(world.get_location("The Daveyard - Dave J's Grave (Chef Quest)"),
+             lambda state: state.has("Shaker Of Saltpeter", player) and
+                           state.has("Southeast-Western Murder Pepper", player) and
+                           state.has("Saute Knife", player) and
+                           state.has("Shovel", player))
     set_rule(world.get_location("The Daveyard Mausoleum - The Skeleton of Dave B. Defeated"),
              lambda state: (state.has("Gore-Splattered Scroll", player) and
                             state.has("Human Ashes x2", player) and
@@ -725,7 +729,7 @@ def set_location_rules(world: "WOLWorld") -> None:
                             state.has("Right Half Of Curly's Map", player) and
                             state.has("Shovel", player)))
 
-    set_rule(world.get_location("Random Encounter (Region A) - Murder Pepper"),
+    set_rule(world.get_location("Random Encounter (Region A) - Murder Pepper (Chef Quest)"),
              lambda state: state.has("Shaker Of Saltpeter", player))
 
     set_rule(world.get_location("Rufus' Gifts - Gift 1"),
