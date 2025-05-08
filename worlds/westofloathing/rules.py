@@ -1,3 +1,4 @@
+from ast import And
 from typing import Dict, TYPE_CHECKING
 from worlds.generic.Rules import set_rule, forbid_item, add_rule
 from BaseClasses import CollectionState
@@ -438,19 +439,47 @@ def set_location_rules(world: "WOLWorld") -> None:
     set_rule(world.get_location("Ghostwood - Sharpened Pencil"),
              lambda state: state.has("Ghost Pencil", player))
     set_rule(world.get_location("Ghostwood Town Hall - Issued ID"),
-             lambda state: state.has("Sharpened Ghost Pencil", player))
+             lambda state: state.has("Ghostwood Visitor's Permit", player) and
+                           state.has("Sharpened Ghost Pencil", player))
     set_rule(world.get_location("Ghostwood Office Supply - Stapler"),
-             lambda state: state.has("Ghostwood Visitor's ID", player))
+             lambda state: state.has("Ghostwood Visitor's Permit", player) and
+                           state.has("Sharpened Ghost Pencil", player) and
+                           state.has("Ghostwood Visitor's ID", player))
     set_rule(world.get_location("Ghostwood Jail - Stapled Report"),
-             lambda state: state.has("Ghost Stapler", player))
+             lambda state: state.has("Ghostwood Visitor's Permit", player) and
+                           state.has("Sharpened Ghost Pencil", player) and
+                           state.has("Ghostwood Visitor's ID", player) and
+                           state.has("Ghost Stapler", player))
     set_rule(world.get_location("Ghostwood Stable - Got IDDTF"),
-             lambda state: state.has("Breadwood Logging Report", player))
+             lambda state: state.has("Ghostwood Visitor's Permit", player) and
+                           state.has("Sharpened Ghost Pencil", player) and
+                           state.has("Ghostwood Visitor's ID", player) and
+                           state.has("Ghost Stapler", player) and
+                           state.has("Breadwood Logging Report", player))
     set_rule(world.get_location("Ghostwood Salooooon - Staple Remover"),
-             lambda state: state.has("Breadwood Logging Report Folder", player))
+             lambda state: state.has("Ghostwood Visitor's Permit", player) and
+                           state.has("Sharpened Ghost Pencil", player) and
+                           state.has("Ghostwood Visitor's ID", player) and
+                           state.has("Ghost Stapler", player) and
+                           state.has("Breadwood Logging Report", player) and
+                           state.has("Breadwood Logging Report Folder", player))
     set_rule(world.get_location("Ghostwood Town Hall - The Final Form"),
-             lambda state: state.has("Ghost Staple Remover", player))
+             lambda state: state.has("Ghostwood Visitor's Permit", player) and
+                           state.has("Sharpened Ghost Pencil", player) and
+                           state.has("Ghostwood Visitor's ID", player) and
+                           state.has("Ghost Stapler", player) and
+                           state.has("Breadwood Logging Report", player) and
+                           state.has("Breadwood Logging Report Folder", player) and
+                           state.has("Ghost Staple Remover", player))
     set_rule(world.get_location("Ghostwood Town Hall - Permit Finally Processed"),
-             lambda state: state.has("Breadwood Logging Permit Forms", player))
+             lambda state: state.has("Ghostwood Visitor's Permit", player) and
+                           state.has("Sharpened Ghost Pencil", player) and
+                           state.has("Ghostwood Visitor's ID", player) and
+                           state.has("Ghost Stapler", player) and
+                           state.has("Breadwood Logging Report", player) and
+                           state.has("Breadwood Logging Report Folder", player) and
+                           state.has("Ghost Staple Remover", player) and
+                           state.has("Breadwood Logging Permit Forms", player))
     set_rule(world.get_location("Ghostwood Salooooon - Whiskey Bottle"),
              lambda state: state.has("Ghostwood Visitor's ID", player))
     set_rule(world.get_location("Soupstock Lode (Level 1) - Workbench Toolbox (Item 1)"),
