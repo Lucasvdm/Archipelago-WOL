@@ -210,6 +210,8 @@ def set_region_rules(world: "WOLWorld") -> None:
 
     world.get_entrance("Postal Way Station -> Chuck's House").access_rule = \
         lambda state: state.has("Postal Code Sheet", player)
+    world.get_entrance("Chuck's House -> Chuck's House Cellar").access_rule = \
+        lambda state: state.has("Chuck's Key", player)
 
     world.get_entrance("Roy Bean's House -> Ol' Granddad").access_rule = \
         lambda state: state.has("Mint Mint Jellybeans", player)
