@@ -375,6 +375,10 @@ def set_location_rules(world: "WOLWorld") -> None:
              lambda state: state.has("Key-Shaped El Vibrato Device", player))
     set_rule(world.get_location("Old Mission Catacombs - Cemented Skull Pile"),
              lambda state: state.has("Pickaxe", player))
+    set_rule(world.get_location("Old Mission - Holy Relic Quest Completed"),
+             lambda state: state.has("St. Beefus' Finger", player) and
+                           state.has("Santa Cortada's Skull", player) and
+                           state.has("Pope's Pelvis", player))
     set_rule(world.get_location("Old Millinery - Office Safe"),
              lambda state: (state.has("Locks And How To Pick Them", player) and
                             state.has("Get Crackin': A Guide To Modern Safes", player)))
