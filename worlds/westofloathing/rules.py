@@ -746,7 +746,7 @@ def set_location_rules(world: "WOLWorld") -> None:
     set_rule(world.get_location("Rufus' Gifts - Gift 5"),
              lambda state: state.has("Blank Postcard", player, 5))
     set_rule(world.get_location("Opened Charred Locket"),
-             lambda state: state.has("Locks And How To Pick Them", player))
+             lambda state: state.has("Charred Locket", player) and state.has("Locks And How To Pick Them", player))
 
     #Same deal here as with the El Vibrato cylinders, only need one for each of these locations but need to guarantee all 3 are accessible before spending on any given check
     set_rule(world.get_location("Master Cookery Crafting - Level 1 (Badge)"),
