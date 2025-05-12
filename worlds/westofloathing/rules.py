@@ -816,7 +816,7 @@ def set_location_rules(world: "WOLWorld") -> None:
                             state.has("Chili Sin Pistoles", player)))
         set_rule(world.get_location("Gun Manor Kitchen - Spice Rack"),
              lambda state: state.can_reach_region("Gun Manor Dining Room", player))
-        set_rule(world.get_location("Gun Manor Parlor - Sofa Cushions (Murdered Chili)"),
+        set_rule(world.get_location("Gun Manor Kitchen - Cooked the Chili"),
              lambda state: (state.can_reach_region("Gun Manor Dining Room", player) and
                             state.can_reach_region("Gun Manor Library", player) and
                             state.has("Chili Spices", player) and
