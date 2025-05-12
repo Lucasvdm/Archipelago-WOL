@@ -848,7 +848,8 @@ def set_location_rules(world: "WOLWorld") -> None:
         set_rule(world.get_location("Magic-Infused Leaf Crafting - 5 Leaves"),
                  lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
         set_rule(world.get_location("Magic-Infused Leaf Crafting - 7 Leaves"),
-                 lambda state: state.can_reach_region("Gun Manor Hedge Maze", player))
+                 lambda state: state.can_reach_region("Gun Manor Hedge Maze", player) and
+                               state.has("The Hedge Wizard's Orb", player))
         set_rule(world.get_location("Spider Part Crafting - 4 Piles"),
                  lambda state: state.can_reach_region("Gun Manor Cellar", player))
         set_rule(world.get_location("Spider Part Crafting - 6 Piles"),
