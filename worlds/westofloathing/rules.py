@@ -55,16 +55,19 @@ def can_build_all_dirtwater_shops(state: CollectionState, world: "WOLWorld") -> 
 def has_common_resistance(state: CollectionState, world: "WOLWorld", checking_for_murray: bool = False) -> bool:
     player = world.player
 
-    return (
-            (
-             state.has("Desert Eatin' And Drinkin'", player) and #For foraging clownwort pollen
-             (
-              state.can_reach_region("Map Region C", player) or
-              state.can_reach_region("Circus", player) or
-              state.can_reach_region("Lazy-A Dude Ranch", player) or
-              state.can_reach_region("Olive Garden's Homestead", player)
-             )
-            ) or
+    has_vanilla_clownwort = state.has("Desert Eatin' And Drinkin'", player) and (
+        state.can_reach_region("Map Region C", player) or
+        state.can_reach_region("Circus", player) or
+        state.can_reach_region("Lazy-A Dude Ranch", player) or
+        state.can_reach_region("Olive Garden's Homestead", player)
+    )
+
+    if world.options.dlc_enabled:
+        can_get_clownwort = has_vanilla_clownwort or (state.has("Desert Eatin' And Drinkin'", player) and state.can_reach_region("Gun Manor Hedge Maze", player))
+    else:
+        can_get_clownwort = has_vanilla_clownwort
+
+    return (can_get_clownwort or
             can_cook(state, world) and not checking_for_murray and can_save_murray(state, world) or #Can cook Mirrorbeans at level 3
             state.has("Advanced Beancraft", player, 8)
             #Could get Uncanny Presence with fewer of these, 5 guarantees you have the option -
