@@ -812,7 +812,7 @@ def set_location_rules(world: "WOLWorld") -> None:
         set_rule(world.get_location("Gun Manor Laboratory - Workbench"),
              lambda state: (state.has("Wad Of Stuffing", player) and
                             state.has("1.2337\" Diameter Tin Can", player)))
-        set_rule(world.get_location("Gun Manor Laboratory - Workbench"),
+        set_rule(world.get_location("Gun Manor Laboratory - Gunsmithing Tools (Opus)"),
              lambda state: state.has("Mrs. Gun's Blueprint", player))
         set_rule(world.get_location("Gun Manor Parlor - Sofa Cushions (Murdered Chili)"),
              lambda state: (state.can_reach_region("Gun Manor Dining Room", player) and
