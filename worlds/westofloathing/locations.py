@@ -303,6 +303,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Jumbleneck Mine (Left Tunnel) - Dynamite Crate": WOLLocationData("Jumbleneck Mine (Inside)", "Jumbleneck Mine"),
     "Jumbleneck Mine (Right Tunnel) - Idol": WOLLocationData("Jumbleneck Mine (Inside)", "Jumbleneck Mine"),
     "El Vibrato Construction Facility - BUGAANZEVE": WOLLocationData("Curious Copse", "Curious Copse"),
+    "El Vibrato Construction Facility - HOSOM NOAN NOFU": WOLLocationData("Curious Copse", "Curious Copse"),
     "Curious Abandoned Well Facility (Equipment Fabrication) - Item 1": WOLLocationData("Curious Abandoned Well Facility", "Curious Abandoned Well"),
     "Curious Abandoned Well Facility (Equipment Fabrication) - Item 2": WOLLocationData("Curious Abandoned Well Facility", "Curious Abandoned Well"),
     "Curious Abandoned Well Facility (Secondary Storage) - Top Chest": WOLLocationData("Curious Abandoned Well Facility", "Curious Abandoned Well"),

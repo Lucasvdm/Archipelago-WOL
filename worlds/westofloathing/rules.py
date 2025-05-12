@@ -571,6 +571,16 @@ def set_location_rules(world: "WOLWorld") -> None:
     set_rule(world.get_location("Jumbleneck Mine (Right Tunnel) - Idol"),
              lambda state: (state.has("Unstable Stick Of Dynamite", player) and
                             state.has("Bag Of Grease", player)))
+    set_rule(world.get_location("El Vibrato Construction Facility - BUGAANZEVE"),
+             lambda state: (has_stench_resistance(state, world) and #In addition to getting to Curious Copse, need to activate machine in El Vibrato Ruin
+                            (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
+                            has_elv_keystone_source(state, world) and
+                            has_elv_battery_source(state, world)))
+    set_rule(world.get_location("El Vibrato Construction Facility - HOSOM NOAN NOFU"),
+             lambda state: (has_stench_resistance(state, world) and #In addition to getting to Curious Copse, need to activate machine in El Vibrato Ruin
+                            (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player)) and
+                            has_elv_keystone_source(state, world) and
+                            has_elv_battery_source(state, world)))
     set_rule(world.get_location("Curious Abandoned Well Facility (Secondary Storage) - Top Chest"),
              lambda state: has_elv_keystone_source(state, world))
     set_rule(world.get_location("Curious Abandoned Well Facility (Secondary Storage) - Bottom Chest"),
