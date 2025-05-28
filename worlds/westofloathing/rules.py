@@ -193,8 +193,9 @@ def set_region_rules(world: "WOLWorld") -> None:
     #Bounty regions don't really have any hard requirements - even for the ones that need items for the peaceful resolution,
     #you can always just kill 'em, so by default there's the option for basically free progression up to the pickle factory
 
-    world.get_entrance("Silversmith's House -> The Silver Plater").access_rule = \
-        lambda state: state.has("Locks And How To Pick Them", player)
+    #TODO: Unlocking the door to the Silversmith's House requires a needle but not Lockpickin', but don't have a good way to consider needles for logic yet
+    #world.get_entrance("Silversmith's House -> The Silver Plater").access_rule = \
+    #    lambda state: state.has("needle", player)
 
     world.get_entrance("Circus -> Circus (Inside)").access_rule = \
         lambda state: state.has("Circus Ticket", player)
@@ -317,15 +318,18 @@ def set_location_rules(world: "WOLWorld") -> None:
 
     set_rule(world.get_location("Shaggy Dog Cave - Bean-Iron Deposit"),
              lambda state: state.has("Beans Illustrated", player) and state.has("Pickaxe", player))
-    set_rule(world.get_location("Silversmith's House - Spittoon"),
-             lambda state: state.has("Locks And How To Pick Them", player))
+
+    #TODO: Unlocking the door to the Silversmith's House requires a needle but not Lockpickin', but don't have a good way to consider needles for logic yet
+    #set_rule(world.get_location("Silversmith's House - Spittoon"),
+    #         lambda state: state.has("Locks And How To Pick Them", player))
+    #set_rule(world.get_location("Silversmith's House - Shelf (Item 1)"),
+    #         lambda state: state.has("Locks And How To Pick Them", player))
+    #set_rule(world.get_location("Silversmith's House - Shelf (Item 2)"),
+    #         lambda state: state.has("Locks And How To Pick Them", player))
+
     set_rule(world.get_location("Silversmith's House - Safe"),
-             lambda state: (state.has("Locks And How To Pick Them", player) and
-                            state.has("Get Crackin': A Guide To Modern Safes", player)))
-    set_rule(world.get_location("Silversmith's House - Shelf (Item 1)"),
-             lambda state: state.has("Locks And How To Pick Them", player))
-    set_rule(world.get_location("Silversmith's House - Shelf (Item 2)"),
-             lambda state: state.has("Locks And How To Pick Them", player))
+             lambda state: state.has("Get Crackin': A Guide To Modern Safes", player))
+
     set_rule(world.get_location("Danny's Tannery (St. Rage Shed) - Grady's Cowsbane Seeds"),
              lambda state: (state.has("Tannery Back Door Key", player) and
                             state.has("Tannery St. Rage Key", player)))
