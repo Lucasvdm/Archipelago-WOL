@@ -105,6 +105,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Fort Cowardice Math Tent - Shelves": WOLLocationData("Fort Cowardice", "Fort Cowardice"),
     "Fort Cowardice Math Tent - Safe": WOLLocationData("Fort Cowardice", "Fort Cowardice"),
     "Fort Cowardice Goblin Caves - First Victory": WOLLocationData("Fort Cowardice", "Fort Cowardice"),
+    "Fort Cowardice - Cannonball": WOLLocationData("Fort Cowardice", "Fort Cowardice"),
     "Gustavson Gulch - Deli Hut": WOLLocationData("Gustavson Gulch", "Gustavson Gulch"),
     "Gustavson Gulch Storage Hut - Random Item": WOLLocationData("Gustavson Gulch", "Gustavson Gulch"),
     "Gustavson Gulch Storage Hut - More Random Item": WOLLocationData("Gustavson Gulch", "Gustavson Gulch"),
