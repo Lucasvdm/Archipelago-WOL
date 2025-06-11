@@ -26,6 +26,14 @@ class RandomizeGoblintongue(DefaultOnToggle):
     internal_name = "randomize_goblintongue"
     display_name = "Randomize Goblintongue"
 
+class UnbreakableTools(Toggle):
+    """
+    Makes it impossible for shovels and pickaxes to break in certain circumstances.
+    If this is disabled, additional tools will be available for purchase if yours breaks.
+    """
+    internal_name = "unbreakable_tools"
+    display_name = "Unbreakable Tools"
+
 @dataclass
 class WOLOptions(PerGameCommonOptions):
     start_inventory_from_pool: StartInventoryPool
@@ -33,6 +41,7 @@ class WOLOptions(PerGameCommonOptions):
     dlc_enabled: EnableDLC
     randomize_ghost_coach: RandomizeGunManorCoach
     randomize_goblintongue: RandomizeGoblintongue
+    unbreakable_tools: UnbreakableTools
 
 wol_option_groups = [
     # OptionGroup("Logic Options", [

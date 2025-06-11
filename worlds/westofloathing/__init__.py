@@ -124,7 +124,8 @@ class WOLWorld(World):
         slot_data: Dict[str, Any] = {
             "dlc_enabled": self.options.dlc_enabled.value,
             "randomize_ghost_coach": self.options.randomize_ghost_coach.value,
-            "randomize_goblintongue": self.options.randomize_goblintongue.value
+            "randomize_goblintongue": self.options.randomize_goblintongue.value,
+            "unbreakable_tools": self.options.unbreakable_tools.value
         }
 
         return slot_data
