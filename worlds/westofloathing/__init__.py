@@ -94,6 +94,8 @@ class WOLWorld(World):
         if self.options.dlc_enabled:
             region_table = basegame_region_table | dlc_region_table
             region_table["Dirtwater"].add("Gun Manor")
+        elif "Gun Manor" in region_table["Dirtwater"]:
+            region_table["Dirtwater"].remove("Gun Manor")
 
         for region_name in region_table:
             region = Region(region_name, self.player, self.multiworld)
