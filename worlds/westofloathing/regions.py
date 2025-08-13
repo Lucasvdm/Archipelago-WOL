@@ -1,4 +1,5 @@
 from typing import Dict, Set
+import copy
 
 #Note: Access paths do not always correlate to the in-game map regions
 #Some map regions (e.g. C) have multiple possible initial access points that need to link back to the region for wandering
@@ -165,3 +166,6 @@ dlc_region_table: Dict[str, Set[str]] = {
     "Gun Manor Toddler's Room": set(),
     "Gun Manor Tween Room": set()
 }
+
+combined_dlc_region_table = copy.deepcopy(basegame_region_table | dlc_region_table)
+combined_dlc_region_table["Dirtwater"].add("Gun Manor")
