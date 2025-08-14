@@ -14,7 +14,7 @@ def can_leatherwork(state: CollectionState, world: "WOLWorld") -> bool:
              state.has("A Portable Leatherwork Bench", player) or
              state.can_reach_region("Hellstrom Ranch", player)
             ) and
-            state.has("Varmint Skinnin' Knife", player) #Not technically a requirement for everything but reasonable to expect
+            state.has("Varmint Skinnin' Knife", player)
            )
 
 def can_cook(state: CollectionState, world: "WOLWorld") -> bool:
@@ -259,6 +259,11 @@ def set_region_rules(world: "WOLWorld") -> None:
 
     world.get_entrance("Miscellaneous -> Leatherworkery Crafting").access_rule = \
         lambda state: can_leatherwork(state, world)
+    #Can get some of the smoldering/infernal leather earlier (Alexandria Ranch/Grizzled Skinner), but to get ALL of them you need access to these regions' encounters
+    world.get_entrance("Leatherworkery Crafting -> Leatherworkery Crafting (Level 2)").access_rule = \
+        lambda state: state.can_reach_region("Map Region E", player)
+    world.get_entrance("Leatherworkery Crafting -> Leatherworkery Crafting (Level 3)").access_rule = \
+        lambda state: state.can_reach_region("Map Region G", player)
     world.get_entrance("Miscellaneous -> Master Cookery Crafting").access_rule = \
         lambda state: can_cook(state, world)
 

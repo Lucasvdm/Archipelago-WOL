@@ -126,7 +126,9 @@ basegame_region_table: Dict[str, Set[str]] = {
     "Olive Garden's Homestead": set(),
     "Random Encounters H": set(),
     "Miscellaneous": {"Leatherworkery Crafting", "Master Cookery Crafting", "Progressive Containers"},
-    "Leatherworkery Crafting": set(),
+    "Leatherworkery Crafting": {"Leatherworkery Crafting (Level 2)", "Leatherworkery Crafting (Level 3)"},
+    "Leatherworkery Crafting (Level 2)": set(),
+    "Leatherworkery Crafting (Level 3)": set(),
     "Master Cookery Crafting": set(),
     "Progressive Containers": set()
 }
