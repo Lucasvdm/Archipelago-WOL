@@ -113,7 +113,8 @@ def has_elv_keystone_source(state: CollectionState, world: "WOLWorld") -> bool:
             state.has("El Vibrato Transponder", player) and
             (
              state.can_reach_region("The Perfessor's House", player) or
-             state.can_reach_region("Map Region D", player) #Can farm them in the Curious Abandoned Well or from Region D encounters
+             state.can_reach_region("Map Region D", player) or #Can farm them in the Curious Abandoned Well or from Region D/E encounters
+             state.can_reach_region("Map Region E", player)
             )
            )
 
