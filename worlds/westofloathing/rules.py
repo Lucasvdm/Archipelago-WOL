@@ -108,19 +108,12 @@ def has_cold_resistance(state: CollectionState, world: "WOLWorld") -> bool:
 def has_elv_keystone_source(state: CollectionState, world: "WOLWorld") -> bool:
     player = world.player
 
+    #Can also farm these in the Lost Dutch Oven Mine chamber (infinite El Vibrato combat), but it requires a keystone to get in
     return (
+            state.has("El Vibrato Transponder", player) and
             (
-             state.can_reach_region("The Perfessor's House", player) and
-             state.has("El Vibrato Transponder", player)
-            ) or
-            (
-             state.can_reach_region("Lost Dutch Oven Mine", player) and
-             has_stench_resistance(state, world) and
-             (state.has("Percussive Maintenance", player) or state.has("Can Of Oil", player))
-            ) or
-            ( #Can farm them in the Curious Abandoned Well or from Region D encounters
-             state.can_reach_region("Map Region D", player) and
-             state.has("El Vibrato Transponder", player)
+             state.can_reach_region("The Perfessor's House", player) or
+             state.can_reach_region("Map Region D", player) #Can farm them in the Curious Abandoned Well or from Region D encounters
             )
            )
 
