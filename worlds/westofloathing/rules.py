@@ -749,6 +749,8 @@ def set_location_rules(world: "WOLWorld") -> None:
 
     set_rule(world.get_location("Random Encounter (Region A) - Murder Pepper (Chef Quest)"),
              lambda state: state.has("Shaker Of Saltpeter", player))
+    set_rule(world.get_location("Random Encounter (Region D) - Drunk Ghost (Give Whiskey)"),
+             lambda state: state.has("Bottle Of Ghost Whiskey", player))
 
     set_rule(world.get_location("Rufus' Gifts - Gift 1"),
              lambda state: state.has("Blank Postcard", player))
