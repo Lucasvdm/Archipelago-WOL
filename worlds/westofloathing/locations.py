@@ -551,7 +551,7 @@ location_table: Dict[str, WOLLocationData] = {
     "Random Encounter (Region D) - Electrified Skeleton": WOLLocationData("Random Encounters D", "Random Encounters D"),
     "Random Encounter (Region D) - Skeletal Rifleman": WOLLocationData("Random Encounters D", "Random Encounters D"),
     "Random Encounter (Region D) - Drunk Ghost (Give Whiskey)": WOLLocationData("Random Encounters D", "Random Encounters D"),
-    "Random Encounter (Region E) - 13th Encounter (Mallet)": WOLLocationData("Random Encounters E", "Random Encounters E"),
+    "Random Encounter (Region E) - 13th Cowrrupted Encounter": WOLLocationData("Random Encounters E", "Random Encounters E"),
     "Random Encounter (Region E) - Vigilante Cultist Hunter": WOLLocationData("Random Encounters E", "Random Encounters E"),
     "Random Encounter (Region E) - Wandering Necromancer Cultist (Hood)": WOLLocationData("Random Encounters E", "Random Encounters E"),
     "Random Encounter (Region E) - Wandering Necromancer Cultist (Shovel)": WOLLocationData("Random Encounters E", "Random Encounters E"),
