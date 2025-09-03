@@ -518,6 +518,8 @@ def set_location_rules(world: "WOLWorld") -> None:
                             state.has("Pickaxe", player) and
                             state.has("El Vibrato Transponder", player) and
                             has_elv_keystone_source(state, world)))
+    set_rule(world.get_location("Military Cemetery - 2nd Lt. 69th Innuendo Div. (Combat)"),
+             lambda state: state.has("Shovel", player))
     set_rule(world.get_location("Fort Memoriam Barracks - Trash Pile"),
              lambda state: has_stench_resistance(state, world))
     set_rule(world.get_location("Alexandria Ranch Vault - Glass Case (Right)"),
